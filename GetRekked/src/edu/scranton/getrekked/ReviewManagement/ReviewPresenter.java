@@ -1,9 +1,9 @@
-package edu.scranton.team1.getrekked.ReviewManagement;
+package edu.scranton.getrekked.ReviewManagement;
 
 import java.util.HashMap;
 
-import edu.scranton.team1.getrekked.ReviewManagement.ReviewPresenter.View;
-import edu.scranton.team1.getrekked.client.AppController;
+import edu.scranton.getrekked.ReviewManagement.ReviewPresenter.View;
+import edu.scranton.getrekked.client.AppController;
 
 public class ReviewPresenter {
 	public static interface View{

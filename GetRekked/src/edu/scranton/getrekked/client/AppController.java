@@ -1,13 +1,21 @@
-package edu.scranton.team1.getrekked.client;
+package edu.scranton.getrekked.client;
 
 import java.util.HashMap;
 //import edu.scranton.bi.client.AppController;
 
 
-import edu.scranton.team1.getrekked.RecommendationManagement.RecommendationPresenter;
-import edu.scranton.team1.getrekked.RecommendationManagement.RecommendationView;
-import edu.scranton.team1.getrekked.ReviewManagement.ReviewPresenter;
-import edu.scranton.team1.getrekked.ReviewManagement.ReviewView;
+import edu.scranton.getrekked.RecommendationManagement.RecommendationPresenter;
+import edu.scranton.getrekked.RecommendationManagement.RecommendationView;
+import edu.scranton.getrekked.ReviewManagement.ReviewPresenter;
+import edu.scranton.getrekked.ReviewManagement.ReviewView;
+import edu.scranton.getrekked.client.Authentication.LoginPresenter;
+import edu.scranton.getrekked.client.Authentication.LoginView;
+import edu.scranton.getrekked.client.UserManagement.CreateProfilePresenter;
+import edu.scranton.getrekked.client.UserManagement.CreateProfileView;
+import edu.scranton.getrekked.client.UserManagement.UpdateProfilePresenter;
+import edu.scranton.getrekked.client.UserManagement.UpdateProfileView;
+import edu.scranton.getrekked.client.UserManagement.ViewProfilePresenter;
+import edu.scranton.getrekked.client.UserManagement.ViewProfileView;
 
 public class AppController {
 	private RecommendationView recommendationView = null;

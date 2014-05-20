@@ -1,9 +1,9 @@
-package edu.scranton.team1.getrekked.RecommendationManagement;
+package edu.scranton.getrekked.RecommendationManagement;
 
 import java.util.HashMap;
 
-import edu.scranton.team1.getrekked.RecommendationManagement.RecommendationPresenter.View;
-import edu.scranton.team1.getrekked.client.AppController;
+import edu.scranton.getrekked.RecommendationManagement.RecommendationPresenter.View;
+import edu.scranton.getrekked.client.AppController;
 
 public class RecommendationPresenter {
 	public static interface View{
