@@ -3,21 +3,25 @@ package edu.scranton.getrekked.client;
 import java.util.HashMap;
 //import edu.scranton.bi.client.AppController;
 
-
 import edu.scranton.getrekked.RecommendationManagement.RecommendationPresenter;
 import edu.scranton.getrekked.RecommendationManagement.RecommendationView;
 import edu.scranton.getrekked.ReviewManagement.ReviewPresenter;
 import edu.scranton.getrekked.ReviewManagement.ReviewView;
 import edu.scranton.getrekked.client.Authentication.LoginPresenter;
 import edu.scranton.getrekked.client.Authentication.LoginView;
+import edu.scranton.getrekked.client.Authentication.Proxy.AuthenticationServiceProxy;
 import edu.scranton.getrekked.client.UserManagement.CreateProfilePresenter;
 import edu.scranton.getrekked.client.UserManagement.CreateProfileView;
 import edu.scranton.getrekked.client.UserManagement.UpdateProfilePresenter;
 import edu.scranton.getrekked.client.UserManagement.UpdateProfileView;
 import edu.scranton.getrekked.client.UserManagement.ViewProfilePresenter;
 import edu.scranton.getrekked.client.UserManagement.ViewProfileView;
+import edu.scranton.getrekked.client.UserManagement.Proxy.UserServiceProxy;
+import edu.scranton.getrekked.shared.User;
 
 public class AppController {
+	private AuthenticationServiceProxy authenticationServiceProxy = null;
+	private UserServiceProxy userServiceProxy = null;
 	private RecommendationView recommendationView = null;
 	private RecommendationPresenter recommendationPresenter = null;
 	private ReviewPresenter reviewPresenter = null;
@@ -33,6 +37,7 @@ public class AppController {
 	
 	private static AppController appController = null;
 	
+	private User currentUser = null;
 	
 	public static AppController instance() {
 		if (appController == null)
@@ -46,15 +51,27 @@ public class AppController {
 		recommendationView = new RecommendationView(recommendationPresenter);
 		reviewPresenter = new ReviewPresenter();
 		reviewView = new ReviewView(reviewPresenter);
-		loginPresenter = new LoginPresenter();
+		loginPresenter = new LoginPresenter(authenticationServiceProxy);
 		loginView = new LoginView();
-		createProfilePresenter = new CreateProfilePresenter();
+		createProfilePresenter = new CreateProfilePresenter(userServiceProxy);
 		createProfileView = new CreateProfileView(createProfilePresenter);
-		updateProfilePresenter = new UpdateProfilePresenter();
+		updateProfilePresenter = new UpdateProfilePresenter(userServiceProxy);
 		updateProfileView = new UpdateProfileView(updateProfilePresenter);
-		viewProfilePresenter = new ViewProfilePresenter();
+		viewProfilePresenter = new ViewProfilePresenter(userServiceProxy);
 		viewProfileView = new ViewProfileView(viewProfilePresenter);
 		
+	}
+	
+	public User getUser() {
+		return currentUser;
+	}
+
+	public void setUser(User currentUser) {
+		this.currentUser = currentUser;
+	}
+
+	public boolean isUserLoggedIn() {
+		return currentUser != null;
 	}
 	
 	public void go(HashMap<String,String> intent){
