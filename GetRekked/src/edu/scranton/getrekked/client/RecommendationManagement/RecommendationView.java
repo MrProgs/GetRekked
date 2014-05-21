@@ -1,4 +1,4 @@
-package edu.scranton.getrekked.RecommendationManagement;
+package edu.scranton.getrekked.client.RecommendationManagement;
 
 public class RecommendationView {
 
