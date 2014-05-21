@@ -12,9 +12,9 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 
-import edu.scranton.getrekked.shared.BookReview;
-import edu.scranton.getrekked.shared.GameReview;
-import edu.scranton.getrekked.shared.MovieReview;
+import edu.scranton.getrekked.shared.Book;
+import edu.scranton.getrekked.shared.Game;
+import edu.scranton.getrekked.shared.Movie;
 
 
 public class WriteReviewView implements WriteReviewPresenter.View{
@@ -23,9 +23,9 @@ public class WriteReviewView implements WriteReviewPresenter.View{
 	private FlexTable reviewTable = new FlexTable();
 	private TextBox reviewBox;
 	private TextBox rankingBox;
-	private BookReview bookReview;
-	private MovieReview movieReview;
-	private GameReview gameReview;
+	private Book mBook;
+	private Movie mMovie;
+	private Game mGame;
 	
 	public WriteReviewView(WriteReviewPresenter presenter){
 		  this.dispatcher = presenter;
@@ -46,14 +46,14 @@ public class WriteReviewView implements WriteReviewPresenter.View{
 	      reviewBox = new TextBox();
 	      reviewBox.setVisibleLength(250);
 	      rankingBox = new TextBox();
-	      if(bookReview != null){
-	    	  reviewTable.setWidget(0, 0, new Label("Review for ISBN: "+bookReview.getIsbn()));
+	      if(mBook != null){
+	    	  reviewTable.setWidget(0, 0, new Label("Review for ISBN: "+mBook.getIsbn()));
 	      }
-	      else if(movieReview != null){
-	    	  reviewTable.setWidget(0, 0, new Label("Review for "+movieReview.getTitle()+" ("+movieReview.getRelease_date()+")"));
+	      else if(mMovie != null){
+	    	  reviewTable.setWidget(0, 0, new Label("Review for "+mMovie.getTitle()+" ("+mMovie.getRelease_date()+")"));
 	      }
 	      else{ //gameReview != null
-	    	  reviewTable.setWidget(0, 0, new Label("Review for Barcode: "+gameReview.getBarcode()));
+	    	  reviewTable.setWidget(0, 0, new Label("Review for Barcode: "+mGame.getBarcode()));
 	      }  
 	      reviewTable.setWidget(1, 0, new Label("Write review: "));
 	      reviewTable.setWidget(1, 1, reviewBox);
@@ -75,16 +75,16 @@ public class WriteReviewView implements WriteReviewPresenter.View{
 	      this.dispatcher = presenter;
 	}
 	
-	public void setBookData(BookReview review){
-		bookReview = review;
+	public void setBookData(Book book){
+		mBook = book;
 	}
 	
-	public void setMovieData(MovieReview review){
-		movieReview = review;
+	public void setMovieData(Movie movie){
+		mMovie = movie;
 	}
 	
-	public void setGameData(GameReview review){
-		gameReview = review;
+	public void setGameData(Game game){
+		mGame = game;
 	}
 	private class ReviewButtonClickHandler implements ClickHandler {
 	      public void onClick(ClickEvent event) {
