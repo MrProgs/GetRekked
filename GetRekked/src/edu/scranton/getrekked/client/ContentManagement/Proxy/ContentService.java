@@ -15,4 +15,10 @@ public interface ContentService extends RemoteService {
 	public Movie getMovie(String title, int release_year);
 
 	public Game getGame(int barcode);
+	
+	public void addMovie(String name, int release_year);
+	
+	public void addBook(int isbn);
+	
+	public void addGame(int barcode);
 }

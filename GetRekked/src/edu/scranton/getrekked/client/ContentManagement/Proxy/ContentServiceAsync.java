@@ -15,4 +15,11 @@ public interface ContentServiceAsync {
 			AsyncCallback<Movie> callbackGetMovie);
 
 	void getGame(int barcode, AsyncCallback<Game> callbackGetGame);
+
+	void addBook(int isbn, AsyncCallback<Void> callbackGetBook);
+
+	void addMovie(String title, int release_year,
+			AsyncCallback<Void> callbackGetMovie);
+
+	void addGame(int barcode, AsyncCallback<Void> callbackGetGame);
 }

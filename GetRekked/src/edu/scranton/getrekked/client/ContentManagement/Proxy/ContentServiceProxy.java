@@ -24,4 +24,20 @@ public class ContentServiceProxy {
 		ContentServiceAsync contentService = GWT.create(ContentService.class);
 		contentService.getGame(barcode, callbackGetGame);
 	}
+
+	public void addBook(int isbn, AsyncCallback<Void> callbackGetBook) {
+		ContentServiceAsync contentService = GWT.create(ContentService.class);
+		contentService.addBook(isbn, callbackGetBook);
+	}
+
+	public void addMovie(String title, int release_year,
+			AsyncCallback<Void> callbackGetMovie) {
+		ContentServiceAsync contentService = GWT.create(ContentService.class);
+		contentService.addMovie(title, release_year, callbackGetMovie);
+	}
+
+	public void addGame(int barcode, AsyncCallback<Void> callbackGetGame) {
+		ContentServiceAsync contentService = GWT.create(ContentService.class);
+		contentService.addGame(barcode, callbackGetGame);
+	}
 }

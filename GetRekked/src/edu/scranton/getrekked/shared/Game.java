@@ -1,15 +1,14 @@
 package edu.scranton.getrekked.shared;
 
-import java.util.Date;
 
 public class Game {
 	private int barcode;
 	private String publisher;
 	private String esrb;
-	private Date release_date;
+	private int release_date;
 	private String title;
 
-	public Game(int barcode, String publisher, String esrb, Date release_date,
+	public Game(int barcode, String publisher, String esrb, int release_date,
 			String title) {
 		this.barcode = barcode;
 		this.publisher = publisher;
@@ -42,11 +41,11 @@ public class Game {
 		this.esrb = esrb;
 	}
 
-	public Date getRelease_date() {
+	public int getRelease_date() {
 		return release_date;
 	}
 
-	public void setRelease_date(Date release_date) {
+	public void setRelease_date(int release_date) {
 		this.release_date = release_date;
 	}
 
