@@ -1,26 +1,46 @@
 package edu.scranton.getrekked.shared;
 
+import java.util.ArrayList;
+
 public class Book {
-	private int isbn;
+	private String isbn;
 	private String title;
 	private String author;
 	private String publisher;
 	private String language;
-	private String genre;
+	private String imageLink;
+	private ArrayList<String> genres;
+	private ArrayList<String> awards;
 	private int numOfPages;
-	private char copyRight;
+	private String copyRight;
 
-	public Book(int isbn, String title, String author, String publisher,
-			String language, String genre, int numOfPages, char copyRight) {
+	public Book(String isbn) {
 		super();
 		this.isbn = isbn;
-		this.title = title;
-		this.author = author;
-		this.publisher = publisher;
-		this.language = language;
-		this.genre = genre;
-		this.numOfPages = numOfPages;
-		this.copyRight = copyRight;
+	}
+
+	public ArrayList<String> getGenres() {
+		return genres;
+	}
+
+	public void setGenres(ArrayList<String> genres) {
+		this.genres = genres;
+	}
+	
+	public void addGenre(String genre){
+		this.genres.add(genre);
+	}
+
+	public ArrayList<String> getAwards() {
+		return awards;
+	}
+
+	public void setAwards(ArrayList<String> awards) {
+		this.awards = awards;
+	}
+	
+	public void addAward(String award){
+		this.awards.add(award);
 	}
 
 	public int getNumOfPages() {
@@ -31,19 +51,19 @@ public class Book {
 		this.numOfPages = numOfPages;
 	}
 
-	public char getCopyRight() {
+	public String getCopyRight() {
 		return copyRight;
 	}
 
-	public void setCopyRight(char copyRight) {
+	public void setCopyRight(String copyRight) {
 		this.copyRight = copyRight;
 	}
 
-	public int getIsbn() {
+	public String getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(int isbn) {
+	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
 
@@ -78,13 +98,14 @@ public class Book {
 	public void setLanguage(String language) {
 		this.language = language;
 	}
-
-	public String getGenre() {
-		return genre;
+	
+	public String getImageLink() {
+		return imageLink;
 	}
 
-	public void setGenre(String genre) {
-		this.genre = genre;
+	public void setImageLink(String imageLink) {
+		this.imageLink = imageLink;
 	}
+
 
 }
