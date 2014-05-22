@@ -9,7 +9,7 @@
   
   <!-- Default page to serve -->
   <welcome-file-list>
-    <welcome-file>GetRekked3.html</welcome-file>
+    <welcome-file>GetRekked.html</welcome-file>
   </welcome-file-list>
 
 </web-app>

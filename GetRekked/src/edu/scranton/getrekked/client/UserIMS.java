@@ -11,9 +11,8 @@ public class UserIMS implements EntryPoint {
     * This is the entry point method.
     */
    public void onModuleLoad() {
-	  HashMap<String, String> intent = 
-			  new HashMap<String, String>();
-	  intent.put("action", "login");
+	  HashMap<String,String> intent = new HashMap<String,String>();
+	  intent.put("Action", "login");
       AppController.instance().go(intent);
    }
 }

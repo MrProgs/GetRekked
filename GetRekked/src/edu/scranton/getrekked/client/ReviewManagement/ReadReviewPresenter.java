@@ -63,7 +63,7 @@ public class ReadReviewPresenter {
 			AppController.instance().go(intent);
 		}
 	}
-	//read a review written by the give user.
+	//read a review written by the given user.
 	public void readReview(User reviewer){
 		if(intent.get("Category").equals("Book")){
 			AsyncCallback<BookReview> callbackReadBookReview = new AsyncCallback<BookReview>() {
@@ -190,7 +190,6 @@ public class ReadReviewPresenter {
 				
 				public void onSuccess(Book x) {
 					((ReadReviewView) view).setBookData(x);
-					view.display();
 					
 				}
 			};
@@ -242,8 +241,8 @@ public class ReadReviewPresenter {
 		}
 	}
 	
-	public void getUserInfo(){
-		AsyncCallback<User> callbackGetStudent = new AsyncCallback<User>() {
+	/*public void getUserInfo(){
+		AsyncCallback<User> callbackGetUser = new AsyncCallback<User>() {
 
 			public void onFailure(Throwable caught) {
 				System.out.println("server error");
@@ -258,5 +257,5 @@ public class ReadReviewPresenter {
 		};
 		String username = this.intent.get("Username");
 		//userServiceProxy.getStudent(username, callbackGetStudent);
-	}
+	}*/
 }
