@@ -3,17 +3,15 @@ package edu.scranton.getrekked.client;
 import java.util.HashMap;
 //import edu.scranton.bi.client.AppController;
 
-
-
 import edu.scranton.getrekked.client.Authentication.LoginPresenter;
 import edu.scranton.getrekked.client.Authentication.LoginView;
 import edu.scranton.getrekked.client.Authentication.Proxy.AuthenticationServiceProxy;
 import edu.scranton.getrekked.client.RecommendationManagement.RecommendationPresenter;
 import edu.scranton.getrekked.client.RecommendationManagement.RecommendationView;
-import edu.scranton.getrekked.client.ReviewManagement.WriteReviewPresenter;
-import edu.scranton.getrekked.client.ReviewManagement.WriteReviewView;
 import edu.scranton.getrekked.client.ReviewManagement.ReadReviewPresenter;
 import edu.scranton.getrekked.client.ReviewManagement.ReadReviewView;
+import edu.scranton.getrekked.client.ReviewManagement.WriteReviewPresenter;
+import edu.scranton.getrekked.client.ReviewManagement.WriteReviewView;
 import edu.scranton.getrekked.client.ReviewManagement.Proxy.ReviewServiceProxy;
 import edu.scranton.getrekked.client.UserManagement.CreateProfilePresenter;
 import edu.scranton.getrekked.client.UserManagement.CreateProfileView;
@@ -103,7 +101,7 @@ public class AppController {
 		if(intent.get("Action").equals("updateProfile")){
 			updateProfilePresenter.begin();
 		}
-		if(intent.get("Action").equals("viewProfile")){
+		if(intent.get("Action").equals("home")){
 			viewProfilePresenter.begin();
 		}
 	}

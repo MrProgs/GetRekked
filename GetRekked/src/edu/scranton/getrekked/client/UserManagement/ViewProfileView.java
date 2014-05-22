@@ -9,13 +9,15 @@ import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.DecoratorPanel;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RootPanel;
 
 import edu.scranton.getrekked.shared.User;
 
 public class ViewProfileView implements ViewProfilePresenter.View {
-	private final Button addButton;
-	private final Button deleteButton;
+	private final String[] categories = {"Books", "Movies", "Games"};
+	private final Button addContentButton;
+	private final Button deleteContentButton;
 	private final Button editButton;
 	private FlexTable UserTable;
 	private final FlexTable contentTable;
@@ -26,26 +28,33 @@ public class ViewProfileView implements ViewProfilePresenter.View {
 		// DecoratorPanel decPanel = new DecoratorPanel();
 		this.presenter = presenter;
 		mainPanel = new DecoratorPanel();
-		this.addButton = new Button("Add Student");
-		this.deleteButton = new Button("Delete Selected Students");
+		this.addContentButton = new Button("Add Student");
+		this.deleteContentButton = new Button("Delete Selected Students");
 		this.editButton = new Button("Edit Student");
 		this.UserTable = new FlexTable();
 		this.contentTable = new FlexTable();
 
-		HorizontalPanel menuPanel = new HorizontalPanel();
-		menuPanel.add(addButton);
-		menuPanel.add(deleteButton);
-		menuPanel.add(editButton);
+		HorizontalPanel contentPanel = new HorizontalPanel();
+		contentPanel.setSpacing(20);
+		
+		final ListBox dropBox = new ListBox(false);
+		for(int i = 0; i <= categories.length; i++){
+			dropBox.addItem(categories[i]);
+		}
+		
+		contentPanel.add(addContentButton);
+		contentPanel.add(deleteContentButton);
+		contentPanel.add(editButton);
 
-		contentTable.setWidget(0, 0, menuPanel);
+		contentTable.setWidget(0, 0, contentPanel);
 		contentTable.setWidget(1, 0, UserTable);
 		// decPanel.add(contentTable);
 
 		// mainPanel.add(decPanel);
 		mainPanel.add(contentTable);
 
-		addButton.addClickHandler(new AddButtonClickHandler());
-		deleteButton.addClickHandler(new DeleteButtonClickHandler());
+		addContentButton.addClickHandler(new AddButtonClickHandler());
+		deleteContentButton.addClickHandler(new DeleteButtonClickHandler());
 		editButton.addClickHandler(new EditButtonClickHandler());
 	}
 

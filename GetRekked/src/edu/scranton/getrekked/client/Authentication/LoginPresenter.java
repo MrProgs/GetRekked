@@ -29,13 +29,13 @@ public class LoginPresenter {
 		AsyncCallback<User> callbackAuthenticate = new AsyncCallback<User>() {
 			public void onFailure(Throwable caught) {
 				System.out.println("server error");
-				intent.put("action", "login");
+				intent.put("Action", "login");
 				AppController.instance().go(intent);
 			}
 
 			public void onSuccess(User user) {
 				AppController.instance().setUser(user);
-				intent.put("action", "home");
+				intent.put("Action", "home");
 				AppController.instance().go(intent);
 			}
 		};

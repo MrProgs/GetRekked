@@ -1,22 +1,21 @@
 package edu.scranton.getrekked.client.ReviewManagement;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.ArrayList;
-import java.util.Locale;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Locale;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import edu.scranton.getrekked.client.AppController;
-import edu.scranton.getrekked.client.ReviewManagement.Proxy.ReviewServiceProxy;
 import edu.scranton.getrekked.client.ContentManagement.Proxy.ContentServiceProxy;
-import edu.scranton.getrekked.client.ReviewManagement.ReadReviewPresenter.View;
+import edu.scranton.getrekked.client.ReviewManagement.Proxy.ReviewServiceProxy;
 import edu.scranton.getrekked.shared.Book;
 import edu.scranton.getrekked.shared.BookReview;
+import edu.scranton.getrekked.shared.Game;
 import edu.scranton.getrekked.shared.GameReview;
 import edu.scranton.getrekked.shared.Movie;
-import edu.scranton.getrekked.shared.Game;
 import edu.scranton.getrekked.shared.MovieReview;
 import edu.scranton.getrekked.shared.User;
 
