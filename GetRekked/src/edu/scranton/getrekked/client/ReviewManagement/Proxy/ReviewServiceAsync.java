@@ -1,7 +1,6 @@
 package edu.scranton.getrekked.client.ReviewManagement.Proxy;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
@@ -11,13 +10,13 @@ import edu.scranton.getrekked.shared.MovieReview;
 
 public interface ReviewServiceAsync {
 
-	void getMovieReview(String user, String title, String release_date,
+	void getMovieReview(String user, String title, int release_year,
 			AsyncCallback<MovieReview> callbackGetMovieReview);
 
-	void getAllMovieReviews(String title, String release_date,
+	void getAllMovieReviews(String title, int release_year,
 			AsyncCallback<ArrayList<MovieReview>> callbackGetMovieReviews);
 
-	void writeMovieReview(String user, String title, String release_date,
+	void writeMovieReview(String user, String title, int release_year,
 			String review, int rank,
 			AsyncCallback<MovieReview> callbackWriteMovieReview);
 

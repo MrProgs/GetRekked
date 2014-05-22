@@ -1,9 +1,8 @@
 package edu.scranton.getrekked.client.ReviewManagement;
 
 
-import com.google.gwt.i18n.client.DateTimeFormat;
+
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
 
@@ -30,9 +29,6 @@ public class ReadReviewPresenter {
 	private HashMap<String, String> intent;
 	private ReviewServiceProxy reviewServiceProxy;
 	private ContentServiceProxy contentServiceProxy;
-	private Book book;
-	private Movie movie;
-	private Game game;
 	private User reviewer;
 
 	public ReadReviewPresenter(ReviewServiceProxy proxy) {
@@ -81,9 +77,11 @@ public class ReadReviewPresenter {
 
 				}
 			};
-			System.out.println(book.getTitle());
-			reviewServiceProxy.getBookReview(reviewer.getUserName(),
-					book.getIsbn(), callbackReadBookReview);
+			
+			int isbn = Integer.parseInt(this.intent.get("isbn"));
+			String username = reviewer.getUserName();
+			reviewServiceProxy.getBookReview(username, isbn, callbackReadBookReview);
+			
 		} else if (intent.get("Category").equals("Movie")) {
 			AsyncCallback<MovieReview> callbackReadMovieReview = new AsyncCallback<MovieReview>() {
 
@@ -98,11 +96,12 @@ public class ReadReviewPresenter {
 					view.display();
 				}
 			};
-			System.out.println(movie.getTitle() + " ("
-					+ movie.getRelease_date() + ")");
-			reviewServiceProxy.getMovieReview(reviewer.getUserName(),
-					movie.getTitle(), movie.getRelease_date(),
-					callbackReadMovieReview);
+			
+			int year = Integer.parseInt(this.intent.get("release_year"));
+			String title = this.intent.get("title");
+			String username = reviewer.getUserName();
+			reviewServiceProxy.getMovieReview(username,title,year,callbackReadMovieReview);
+			
 		} else { // (intent.get("Category").equals("Game"))
 			AsyncCallback<GameReview> callbackReadGameReview = new AsyncCallback<GameReview>() {
 
@@ -117,10 +116,12 @@ public class ReadReviewPresenter {
 					view.display();
 				}
 			};
+			
+			String username = reviewer.getUserName();
 			int barcode = Integer.parseInt(this.intent.get("Barcode"));
-			reviewServiceProxy.getGameReview(reviewer.getUserName(), barcode,
-					callbackReadGameReview);
+			reviewServiceProxy.getGameReview(username, barcode,callbackReadGameReview);
 		}
+		
 		this.intent.put("Action", "home");
 		AppController.instance().go(intent);
 	}
@@ -142,9 +143,10 @@ public class ReadReviewPresenter {
 
 				}
 			};
-			System.out.println(book.getTitle());
-			reviewServiceProxy.getAllBookReviews(book.getIsbn(),
-					callbackReadBookReview);
+			
+			int isbn = Integer.parseInt(this.intent.get("isbn"));
+			reviewServiceProxy.getAllBookReviews(isbn,callbackReadBookReview);
+			
 		} else if (intent.get("Category").equals("Movie")) {
 			AsyncCallback<ArrayList<MovieReview>> callbackReadMovieReview = new AsyncCallback<ArrayList<MovieReview>>() {
 
@@ -159,10 +161,11 @@ public class ReadReviewPresenter {
 					view.display();
 				}
 			};
-			System.out.println(movie.getTitle() + " ("
-					+ movie.getRelease_date() + ")");
-			reviewServiceProxy.getAllMovieReviews(movie.getTitle(),
-					movie.getRelease_date(), callbackReadMovieReview);
+			
+			String title = this.intent.get("title");
+			int year = Integer.parseInt(this.intent.get("release_year"));
+			reviewServiceProxy.getAllMovieReviews(title,year,callbackReadMovieReview);
+			
 		} else { // (intent.get("Category").equals("Game"))
 			AsyncCallback<ArrayList<GameReview>> callbackReadGameReview = new AsyncCallback<ArrayList<GameReview>>() {
 
@@ -177,10 +180,11 @@ public class ReadReviewPresenter {
 					view.display();
 				}
 			};
+			
 			int barcode = Integer.parseInt(this.intent.get("Barcode"));
-			reviewServiceProxy.getAllGameReviews(barcode,
-					callbackReadGameReview);
+			reviewServiceProxy.getAllGameReviews(barcode,callbackReadGameReview);
 		}
+		
 		this.intent.put("Action", "home");
 		AppController.instance().go(intent);
 	}
@@ -200,8 +204,10 @@ public class ReadReviewPresenter {
 
 				}
 			};
+			
 			int isbn = Integer.parseInt(this.intent.get("ISBN"));
 			contentServiceProxy.getBook(isbn, callbackGetBook);
+			
 		} else if (intent.get("Category").equals("Movie")) {
 			AsyncCallback<Movie> callbackGetMovie = new AsyncCallback<Movie>() {
 
@@ -217,11 +223,11 @@ public class ReadReviewPresenter {
 
 				}
 			};
+			
 			String title = this.intent.get("Title");
-			Date date = new Date("MM/dd/yy");
-			String release_date = DateTimeFormat.getShortDateFormat().format(date);
-
-			contentServiceProxy.getMovie(title, release_date, callbackGetMovie);
+			int release_year = Integer.parseInt(this.intent.get("release_year"));
+			contentServiceProxy.getMovie(title, release_year, callbackGetMovie);
+			
 		} else { // intent.get("Category").equals("Game")
 			AsyncCallback<Game> callbackGetGame = new AsyncCallback<Game>() {
 
@@ -237,6 +243,7 @@ public class ReadReviewPresenter {
 
 				}
 			};
+			
 			int barcode = Integer.parseInt(this.intent.get("Barcode"));
 			contentServiceProxy.getGame(barcode, callbackGetGame);
 		}

@@ -1,6 +1,5 @@
 package edu.scranton.getrekked.client.ContentManagement.Proxy;
 
-import java.util.Date;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -15,10 +14,10 @@ public class ContentServiceProxy {
 		contentService.getBook(isbn, callbackGetBook);
 	}
 
-	public void getMovie(String title, String release_date,
+	public void getMovie(String title, int release_year,
 			AsyncCallback<Movie> callbackGetMovie) {
 		ContentServiceAsync contentService = GWT.create(ContentService.class);
-		contentService.getMovie(title, release_date, callbackGetMovie);
+		contentService.getMovie(title, release_year, callbackGetMovie);
 	}
 
 	public void getGame(int barcode, AsyncCallback<Game> callbackGetGame) {

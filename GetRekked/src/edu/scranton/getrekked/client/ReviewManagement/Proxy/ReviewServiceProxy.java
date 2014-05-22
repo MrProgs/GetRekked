@@ -1,7 +1,6 @@
 package edu.scranton.getrekked.client.ReviewManagement.Proxy;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -31,25 +30,25 @@ public class ReviewServiceProxy {
 				callbackWriteBookReview);
 	}
 
-	public void getMovieReview(String user, String title, String release_date,
+	public void getMovieReview(String user, String title, int release_year,
 			AsyncCallback<MovieReview> callbackGetMovieReview) {
 		ReviewServiceAsync reviewService = GWT.create(ReviewService.class);
-		reviewService.getMovieReview(user, title, release_date,
+		reviewService.getMovieReview(user, title, release_year,
 				callbackGetMovieReview);
 	}
 
-	public void getAllMovieReviews(String title, String release_date,
+	public void getAllMovieReviews(String title, int release_year,
 			AsyncCallback<ArrayList<MovieReview>> callbackGetMovieReviews) {
 		ReviewServiceAsync reviewService = GWT.create(ReviewService.class);
-		reviewService.getAllMovieReviews(title, release_date,
+		reviewService.getAllMovieReviews(title, release_year,
 				callbackGetMovieReviews);
 	}
 
-	public void writeMovieReview(String user, String title, String release_date,
+	public void writeMovieReview(String user, String title, int release_year,
 			String review, int rank,
 			AsyncCallback<MovieReview> callbackWriteMovieReview) {
 		ReviewServiceAsync reviewService = GWT.create(ReviewService.class);
-		reviewService.writeMovieReview(user, title, release_date, review, rank,
+		reviewService.writeMovieReview(user, title, release_year, review, rank,
 				callbackWriteMovieReview);
 	}
 

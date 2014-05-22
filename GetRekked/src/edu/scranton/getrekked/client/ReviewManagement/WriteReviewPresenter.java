@@ -74,9 +74,11 @@ public class WriteReviewPresenter {
 
 				}
 			};
-			System.out.println(book.getTitle());
-			reviewServiceProxy.writeBookReview(user.getUserName(),
-					book.getIsbn(), review, ranking, callbackWriteBookReview);
+			
+			String reviewer = user.getUserName();
+			int isbn = Integer.parseInt(this.intent.get("isbn"));
+			reviewServiceProxy.writeBookReview(reviewer,isbn,review,ranking,callbackWriteBookReview);
+			
 		} else if (intent.get("Category").equals("Movie")) {
 			AsyncCallback<MovieReview> callbackWriteMovieReview = new AsyncCallback<MovieReview>() {
 
@@ -91,11 +93,12 @@ public class WriteReviewPresenter {
 					AppController.instance().go(intent);
 				}
 			};
-			System.out.println(movie.getTitle() + " ("
-					+ movie.getRelease_date() + ")");
-			reviewServiceProxy.writeMovieReview(user.getUserName(),
-					movie.getTitle(), movie.getRelease_date(), review, ranking,
-					callbackWriteMovieReview);
+			
+			String reviewer = user.getUserName();
+			String title = this.intent.get("title");
+			int year = Integer.parseInt(this.intent.get("release_year"));
+			reviewServiceProxy.writeMovieReview(reviewer,title,year,review,ranking,callbackWriteMovieReview);
+			
 		} else { // (intent.get("Category").equals("Game"))
 			AsyncCallback<GameReview> callbackWriteGameReview = new AsyncCallback<GameReview>() {
 
@@ -110,12 +113,12 @@ public class WriteReviewPresenter {
 					AppController.instance().go(intent);
 				}
 			};
-			System.out
-					.println(game.getTitle() + " (" + game.getBarcode() + ")");
-			reviewServiceProxy
-					.writeGameReview(user.getUserName(), game.getBarcode(),
-							review, ranking, callbackWriteGameReview);
+			
+			String reviewer = user.getUserName();
+			int barcode = Integer.parseInt(this.intent.get("barcode"));
+			reviewServiceProxy.writeGameReview(reviewer,barcode,review,ranking,callbackWriteGameReview);
 		}
+		
 		this.intent.put("Action", "home");
 		AppController.instance().go(intent);
 	}
@@ -136,8 +139,10 @@ public class WriteReviewPresenter {
 
 				}
 			};
-			System.out.println(book.getTitle());
-			contentServiceProxy.getBook(book.getIsbn(), callbackGetBook);
+			
+			int isbn = Integer.parseInt(this.intent.get("isbn"));
+			contentServiceProxy.getBook(isbn, callbackGetBook);
+			
 		} else if (intent.get("Category").equals("Movie")) {
 			AsyncCallback<Movie> callbackGetMovie = new AsyncCallback<Movie>() {
 
@@ -153,10 +158,11 @@ public class WriteReviewPresenter {
 
 				}
 			};
-			System.out.println(movie.getTitle() + " ("
-					+ movie.getRelease_date() + ")");
-			contentServiceProxy.getMovie(movie.getTitle(),
-					movie.getRelease_date(), callbackGetMovie);
+			
+			String title = this.intent.get("title");
+			int year = Integer.parseInt(this.intent.get("release_year"));
+			contentServiceProxy.getMovie(title,year,callbackGetMovie);
+			
 		} else { // intent.get("Category").equals("Game")
 			AsyncCallback<Game> callbackGetGame = new AsyncCallback<Game>() {
 
@@ -172,9 +178,9 @@ public class WriteReviewPresenter {
 
 				}
 			};
-			System.out
-					.println(game.getTitle() + " (" + game.getBarcode() + ")");
-			contentServiceProxy.getGame(game.getBarcode(), callbackGetGame);
+			
+			int barcode = Integer.parseInt(this.intent.get("barcode"));
+			contentServiceProxy.getGame(barcode, callbackGetGame);
 		}
 	}
 

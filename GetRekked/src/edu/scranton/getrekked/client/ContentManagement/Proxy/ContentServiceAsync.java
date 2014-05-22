@@ -1,6 +1,5 @@
 package edu.scranton.getrekked.client.ContentManagement.Proxy;
 
-import java.util.Date;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
@@ -12,7 +11,7 @@ public interface ContentServiceAsync {
 
 	void getBook(int isbn, AsyncCallback<Book> callbackGetBook);
 
-	void getMovie(String title, String release_date,
+	void getMovie(String title, int release_year,
 			AsyncCallback<Movie> callbackGetMovie);
 
 	void getGame(int barcode, AsyncCallback<Game> callbackGetGame);

@@ -1,6 +1,5 @@
 package edu.scranton.getrekked.client.ContentManagement.Proxy;
 
-import java.util.Date;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
@@ -13,7 +12,7 @@ import edu.scranton.getrekked.shared.Movie;
 public interface ContentService extends RemoteService {
 	public Book getBook(int isbn);
 
-	public Movie getMovie(String title, String release_date);
+	public Movie getMovie(String title, int release_year);
 
 	public Game getGame(int barcode);
 }
