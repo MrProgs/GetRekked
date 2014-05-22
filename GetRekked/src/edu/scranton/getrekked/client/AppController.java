@@ -53,6 +53,9 @@ public class AppController {
 	}
 
 	private AppController() {
+		userServiceProxy = new UserServiceProxy();
+		reviewServiceProxy = new ReviewServiceProxy();
+		
 		recommendationPresenter = new RecommendationPresenter();
 		recommendationView = new RecommendationView(recommendationPresenter);
 		writeReviewPresenter = new WriteReviewPresenter(reviewServiceProxy);

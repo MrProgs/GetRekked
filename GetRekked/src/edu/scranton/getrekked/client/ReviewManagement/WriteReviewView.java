@@ -92,7 +92,7 @@ public class WriteReviewView implements WriteReviewPresenter.View {
 		public void onClick(ClickEvent event) {
 			String review = reviewBox.getText();
 			String ranking = rankingBox.getText();
-			dispatcher.writeReview(review, Integer.getInteger(ranking));
+			dispatcher.writeReview(review, Integer.parseInt(ranking));
 		}
 	}
 }
