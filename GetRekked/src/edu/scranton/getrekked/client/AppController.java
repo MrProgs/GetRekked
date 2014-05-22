@@ -55,21 +55,35 @@ public class AppController {
 	private AppController() {
 		userServiceProxy = new UserServiceProxy();
 		reviewServiceProxy = new ReviewServiceProxy();
+		authenticationServiceProxy = new AuthenticationServiceProxy();
 		
 		recommendationPresenter = new RecommendationPresenter();
 		recommendationView = new RecommendationView(recommendationPresenter);
+		
 		writeReviewPresenter = new WriteReviewPresenter(reviewServiceProxy);
 		writeReviewView = new WriteReviewView(writeReviewPresenter);
+		writeReviewPresenter.setView(writeReviewView);
+		
 		readReviewPresenter = new ReadReviewPresenter(reviewServiceProxy);
 		readReviewView = new ReadReviewView(readReviewPresenter);
-		loginPresenter = new LoginPresenter(authenticationServiceProxy);
+		readReviewPresenter.setView(readReviewView);
+		
 		loginView = new LoginView();
+		loginPresenter = new LoginPresenter(authenticationServiceProxy);
+		loginPresenter.setView(loginView);
+		loginView.setPresenter(loginPresenter);
+		
 		createProfilePresenter = new CreateProfilePresenter(userServiceProxy);
 		createProfileView = new CreateProfileView(createProfilePresenter);
+		createProfilePresenter.setView(createProfileView);
+		
 		updateProfilePresenter = new UpdateProfilePresenter(userServiceProxy);
 		updateProfileView = new UpdateProfileView(updateProfilePresenter);
+		updateProfilePresenter.setView(updateProfileView);
+		
 		viewProfilePresenter = new ViewProfilePresenter(userServiceProxy);
 		viewProfileView = new ViewProfileView(viewProfilePresenter);
+		viewProfilePresenter.setView(viewProfileView);
 
 	}
 

@@ -55,14 +55,14 @@ public class CreateProfileView implements CreateProfilePresenter.View {
 		userTable.setWidget(1, 1, lastNameBox);
 		userTable.setWidget(2, 0, new Label("Email"));
 		userTable.setWidget(2, 1, emailBox);
-		userTable.setWidget(0, 0, new Label("Phone Number"));
-		userTable.setWidget(0, 1, phoneNumberBox);
-		userTable.setWidget(1, 0, new Label("Birth Date"));
-		userTable.setWidget(1, 1, dateOfBirthBox);
-		userTable.setWidget(2, 0, new Label("Gender"));
-		userTable.setWidget(2, 1, genderBox);
-		userTable.setWidget(2, 0, new Label("address"));
-		userTable.setWidget(2, 1, addressBox);
+		userTable.setWidget(3, 0, new Label("Phone Number"));
+		userTable.setWidget(3, 1, phoneNumberBox);
+		userTable.setWidget(4, 0, new Label("Birth Date"));
+		userTable.setWidget(4, 1, dateOfBirthBox);
+		userTable.setWidget(5, 0, new Label("Gender"));
+		userTable.setWidget(5, 1, genderBox);
+		userTable.setWidget(6, 0, new Label("address"));
+		userTable.setWidget(6, 1, addressBox);
 
 		FlexTable contentTable = new FlexTable();
 		contentTable.setWidget(0, 0, menuPanel);

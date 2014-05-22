@@ -19,7 +19,7 @@ import edu.scranton.getrekked.shared.Movie;
 import edu.scranton.getrekked.shared.MovieReview;
 import edu.scranton.getrekked.shared.User;
 
-public class ReadReviewView {
+public class ReadReviewView implements ReadReviewPresenter.View {
 	private DecoratorPanel mainPanel = null;
 	private ReadReviewPresenter dispatcher;
 	private FlexTable reviewTable = new FlexTable();

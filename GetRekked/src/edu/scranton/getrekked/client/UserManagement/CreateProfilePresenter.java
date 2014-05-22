@@ -26,12 +26,12 @@ public class CreateProfilePresenter {
 
 			public void onFailure(Throwable caught) {
 				System.out.println("server error");
-				intent.put("action", "createProfile");
+				intent.put("Action", "createProfile");
 				AppController.instance().go(intent);
 			}
 
 			public void onSuccess(Void x) {
-				intent.put("action", "login");
+				intent.put("Action", "login");
 				AppController.instance().go(intent);
 			}
 		};
@@ -46,17 +46,17 @@ public class CreateProfilePresenter {
 	public void cancelOperation() {
 		// the user canceled the add student operation
 		System.out.println("Add User operation cancelled");
-		intent.put("action", "login");
+		intent.put("Action", "login");
 		AppController.instance().go(intent);
 	}
 
 	public void begin() {
 		// check if the user has successfully logged in.
-		if (AppController.instance().isUserLoggedIn()) {
+		//if (AppController.instance().isUserLoggedIn()) {
 			this.view.display();
-		} else {
-			intent.put("action", "login");
-			AppController.instance().go(intent);
-		}
+		//} else {
+			//intent.put("Action", "login");
+			//AppController.instance().go(intent);
+		//}
 	}
 }
