@@ -39,7 +39,8 @@ public class LoginPresenter {
 				AppController.instance().go(intent);
 			}
 		};
-		authenticationServiceProxy.authenticate(userName, password, callbackAuthenticate);
+		authenticationServiceProxy.authenticate(userName, password,
+				callbackAuthenticate);
 	}
 
 	public void cancelOperation() {

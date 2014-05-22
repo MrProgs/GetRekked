@@ -24,8 +24,7 @@ public class LoginView implements LoginPresenter.View {
 	private FlexTable userTable = new FlexTable();
 	private TextBox userNameBox;
 	private PasswordTextBox passwordBox;
-	private HashMap<String, String> intent 
-			= new HashMap<String, String>();
+	private HashMap<String, String> intent = new HashMap<String, String>();
 
 	public LoginView() {
 		mainPanel = new DecoratorPanel();
@@ -45,7 +44,7 @@ public class LoginView implements LoginPresenter.View {
 		});
 		createUserButton.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
-				intent.put("action", "createProfile");
+				intent.put("Action", "createProfile");
 				AppController.instance().go(intent);
 			}
 		});

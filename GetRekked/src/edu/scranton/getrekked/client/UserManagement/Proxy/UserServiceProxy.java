@@ -23,12 +23,14 @@ public class UserServiceProxy {
 		userService.addUser(user, callbackAddUser);
 	}
 
-	public void deleteUsers(ArrayList<Integer> userIds, AsyncCallback<Void> callbackDeleteUser) {
+	public void deleteUsers(ArrayList<Integer> userIds,
+			AsyncCallback<Void> callbackDeleteUser) {
 		UserServiceAsync userService = GWT.create(UserService.class);
 		userService.deleteUsers(userIds, callbackDeleteUser);
 	}
 
-	public void updateUser(User updatedUser, AsyncCallback<Void> callbackEditUser){
+	public void updateUser(User updatedUser,
+			AsyncCallback<Void> callbackEditUser) {
 		UserServiceAsync userService = GWT.create(UserService.class);
 		userService.updateUser(updatedUser, callbackEditUser);
 	}

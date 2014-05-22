@@ -9,9 +9,13 @@ import edu.scranton.getrekked.shared.User;
 
 @RemoteServiceRelativePath("userService")
 public interface UserService extends RemoteService {
-   public User getUser(int id);
-   public ArrayList<User> getAllUsers();
-   public void addUser(User user);
-   public void deleteUsers(ArrayList<Integer> userName);
-   public void updateUser(User updatedUser);
+	public User getUser(int id);
+
+	public ArrayList<User> getAllUsers();
+
+	public void addUser(User user);
+
+	public void deleteUsers(ArrayList<Integer> userName);
+
+	public void updateUser(User updatedUser);
 }

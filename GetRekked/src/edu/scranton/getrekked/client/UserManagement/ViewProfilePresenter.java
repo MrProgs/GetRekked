@@ -12,16 +12,17 @@ import edu.scranton.getrekked.shared.User;
 public class ViewProfilePresenter {
 	public static interface View {
 		public void setData(ArrayList<User> students);
+
 		public void display();
 	}
 
 	private View view = null;
 	private UserServiceProxy userServiceProxy = null;
-	private HashMap<String,String> intent = new HashMap<String,String>();
+	private HashMap<String, String> intent = new HashMap<String, String>();
 
 	public ViewProfilePresenter(UserServiceProxy proxy) {
 		userServiceProxy = proxy;
-	}	
+	}
 
 	public void setView(View view) {
 		this.view = view;
@@ -32,10 +33,11 @@ public class ViewProfilePresenter {
 		if (AppController.instance().isUserLoggedIn()) {
 			getAllUsers();
 		} else {
-			intent.put("action","login");
+			intent.put("action", "login");
 			AppController.instance().go(intent);
 		}
 	}
+
 	private void getAllUsers() {
 		AsyncCallback<ArrayList<User>> callbackGetUsers = new AsyncCallback<ArrayList<User>>() {
 
@@ -52,7 +54,7 @@ public class ViewProfilePresenter {
 		};
 		userServiceProxy.getAllUsers(callbackGetUsers);
 	}
-	
+
 	public void addStudent() {
 		System.out.println("add student");
 		intent.put("action", "addStudent");
@@ -78,8 +80,8 @@ public class ViewProfilePresenter {
 		};
 		userServiceProxy.deleteUsers(studentIDs, callbackDeleteStudents);
 	}
-	
-	public void editStudents(String studentID){
+
+	public void editStudents(String studentID) {
 		System.out.println("edit student");
 		System.out.println(studentID.toString());
 		this.intent.put("action", "editStudent");

@@ -3,13 +3,16 @@ package edu.scranton.getrekked.client;
 import java.util.HashMap;
 //import edu.scranton.bi.client.AppController;
 
-import edu.scranton.getrekked.RecommendationManagement.RecommendationPresenter;
-import edu.scranton.getrekked.RecommendationManagement.RecommendationView;
-import edu.scranton.getrekked.ReviewManagement.ReviewPresenter;
-import edu.scranton.getrekked.ReviewManagement.ReviewView;
 import edu.scranton.getrekked.client.Authentication.LoginPresenter;
 import edu.scranton.getrekked.client.Authentication.LoginView;
 import edu.scranton.getrekked.client.Authentication.Proxy.AuthenticationServiceProxy;
+import edu.scranton.getrekked.client.RecommendationManagement.RecommendationPresenter;
+import edu.scranton.getrekked.client.RecommendationManagement.RecommendationView;
+import edu.scranton.getrekked.client.ReviewManagement.ReadReviewPresenter;
+import edu.scranton.getrekked.client.ReviewManagement.ReadReviewView;
+import edu.scranton.getrekked.client.ReviewManagement.WriteReviewPresenter;
+import edu.scranton.getrekked.client.ReviewManagement.WriteReviewView;
+import edu.scranton.getrekked.client.ReviewManagement.Proxy.ReviewServiceProxy;
 import edu.scranton.getrekked.client.UserManagement.CreateProfilePresenter;
 import edu.scranton.getrekked.client.UserManagement.CreateProfileView;
 import edu.scranton.getrekked.client.UserManagement.UpdateProfilePresenter;
@@ -24,8 +27,11 @@ public class AppController {
 	private UserServiceProxy userServiceProxy = null;
 	private RecommendationView recommendationView = null;
 	private RecommendationPresenter recommendationPresenter = null;
-	private ReviewPresenter reviewPresenter = null;
-	private ReviewView reviewView= null;
+	private WriteReviewPresenter writeReviewPresenter = null;
+	private WriteReviewView writeReviewView = null;
+	private ReadReviewPresenter readReviewPresenter = null;
+	private ReadReviewView readReviewView = null;
+	private ReviewServiceProxy reviewServiceProxy = null;
 	private LoginPresenter loginPresenter = null;
 	private LoginView loginView = null;
 	private CreateProfilePresenter createProfilePresenter = null;
@@ -34,34 +40,53 @@ public class AppController {
 	private UpdateProfileView updateProfileView = null;
 	private ViewProfilePresenter viewProfilePresenter = null;
 	private ViewProfileView viewProfileView = null;
-	
+
 	private static AppController appController = null;
-	
+
 	private User currentUser = null;
-	
+
 	public static AppController instance() {
 		if (appController == null)
 			appController = new AppController();
 
 		return appController;
 	}
-	
-	private AppController(){
+
+	private AppController() {
+		userServiceProxy = new UserServiceProxy();
+		reviewServiceProxy = new ReviewServiceProxy();
+		authenticationServiceProxy = new AuthenticationServiceProxy();
+		
 		recommendationPresenter = new RecommendationPresenter();
 		recommendationView = new RecommendationView(recommendationPresenter);
-		reviewPresenter = new ReviewPresenter();
-		reviewView = new ReviewView(reviewPresenter);
-		loginPresenter = new LoginPresenter(authenticationServiceProxy);
+		
+		writeReviewPresenter = new WriteReviewPresenter(reviewServiceProxy);
+		writeReviewView = new WriteReviewView(writeReviewPresenter);
+		writeReviewPresenter.setView(writeReviewView);
+		
+		readReviewPresenter = new ReadReviewPresenter(reviewServiceProxy);
+		readReviewView = new ReadReviewView(readReviewPresenter);
+		readReviewPresenter.setView(readReviewView);
+		
 		loginView = new LoginView();
+		loginPresenter = new LoginPresenter(authenticationServiceProxy);
+		loginPresenter.setView(loginView);
+		loginView.setPresenter(loginPresenter);
+		
 		createProfilePresenter = new CreateProfilePresenter(userServiceProxy);
 		createProfileView = new CreateProfileView(createProfilePresenter);
+		createProfilePresenter.setView(createProfileView);
+		
 		updateProfilePresenter = new UpdateProfilePresenter(userServiceProxy);
 		updateProfileView = new UpdateProfileView(updateProfilePresenter);
+		updateProfilePresenter.setView(updateProfileView);
+		
 		viewProfilePresenter = new ViewProfilePresenter(userServiceProxy);
 		viewProfileView = new ViewProfileView(viewProfilePresenter);
-		
+		viewProfilePresenter.setView(viewProfileView);
+
 	}
-	
+
 	public User getUser() {
 		return currentUser;
 	}
@@ -73,24 +98,27 @@ public class AppController {
 	public boolean isUserLoggedIn() {
 		return currentUser != null;
 	}
-	
-	public void go(HashMap<String,String> intent){
-		if(intent.get("Action").equals("review")){
-			reviewPresenter.begin();
+
+	public void go(HashMap<String, String> intent) {
+		if (intent.get("Action").equals("write review")) {
+			writeReviewPresenter.begin();
 		}
-		if(intent.get("Action").equals("recommend")){
+		if (intent.get("Action").equals("read review")) {
+			readReviewPresenter.begin();
+		}
+		if (intent.get("Action").equals("recommend")) {
 			recommendationPresenter.begin();
 		}
-		if(intent.get("Action").equals("login")){
+		if (intent.get("Action").equals("login")) {
 			loginPresenter.begin();
 		}
-		if(intent.get("Action").equals("createProfile")){
+		if (intent.get("Action").equals("createProfile")) {
 			createProfilePresenter.begin();
 		}
-		if(intent.get("Action").equals("updateProfile")){
+		if (intent.get("Action").equals("updateProfile")) {
 			updateProfilePresenter.begin();
 		}
-		if(intent.get("Action").equals("viewProfile")){
+		if (intent.get("Action").equals("viewProfile")) {
 			viewProfilePresenter.begin();
 		}
 	}
