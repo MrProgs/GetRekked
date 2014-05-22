@@ -43,7 +43,7 @@ public class WriteReviewView implements WriteReviewPresenter.View {
 		reviewBox = new TextBox();
 		reviewBox.setVisibleLength(250);
 		rankingBox = new TextBox();
-		if (mBook != null) {
+		/*if (mBook != null) {
 			reviewTable.setWidget(0, 0,
 					new Label("Review for ISBN: " + mBook.getIsbn()));
 		} else if (mMovie != null) {
@@ -55,7 +55,7 @@ public class WriteReviewView implements WriteReviewPresenter.View {
 		} else { // gameReview != null
 			reviewTable.setWidget(0, 0, new Label("Review for Barcode: "
 					+ mGame.getBarcode()));
-		}
+		}*/
 		reviewTable.setWidget(1, 0, new Label("Write review: "));
 		reviewTable.setWidget(1, 1, reviewBox);
 		reviewTable.setWidget(2, 0, new Label("Rank (0-5): "));

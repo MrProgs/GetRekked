@@ -6,11 +6,11 @@ public class MovieReview {
 	private String username;
 	private String title;
 	private int rating;
-	private Date release_date;
+	private String release_date;
 	private String user_comment;
 
 	public MovieReview(String username, String title, int rating,
-			Date release_date, String comment) {
+			String release_date, String comment) {
 		this.username = username;
 		this.title = title;
 		this.rating = rating;
@@ -34,11 +34,11 @@ public class MovieReview {
 		this.title = title;
 	}
 
-	public Date getRelease_date() {
+	public String getRelease_date() {
 		return release_date;
 	}
 
-	public void setRelease_date(Date release_date) {
+	public void setRelease_date(String release_date) {
 		this.release_date = release_date;
 	}
 

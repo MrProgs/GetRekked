@@ -12,7 +12,7 @@ public interface ContentServiceAsync {
 
 	void getBook(int isbn, AsyncCallback<Book> callbackGetBook);
 
-	void getMovie(String title, Date release_date,
+	void getMovie(String title, String release_date,
 			AsyncCallback<Movie> callbackGetMovie);
 
 	void getGame(int barcode, AsyncCallback<Game> callbackGetGame);

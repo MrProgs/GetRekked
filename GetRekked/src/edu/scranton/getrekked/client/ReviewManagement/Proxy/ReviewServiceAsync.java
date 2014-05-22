@@ -11,13 +11,13 @@ import edu.scranton.getrekked.shared.MovieReview;
 
 public interface ReviewServiceAsync {
 
-	void getMovieReview(String user, String title, Date release_date,
+	void getMovieReview(String user, String title, String release_date,
 			AsyncCallback<MovieReview> callbackGetMovieReview);
 
-	void getAllMovieReviews(String title, Date release_date,
+	void getAllMovieReviews(String title, String release_date,
 			AsyncCallback<ArrayList<MovieReview>> callbackGetMovieReviews);
 
-	void writeMovieReview(String user, String title, Date release_date,
+	void writeMovieReview(String user, String title, String release_date,
 			String review, int rank,
 			AsyncCallback<MovieReview> callbackWriteMovieReview);
 

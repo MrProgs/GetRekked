@@ -13,13 +13,13 @@ import edu.scranton.getrekked.shared.MovieReview;
 @RemoteServiceRelativePath("reviewService")
 public interface ReviewService extends RemoteService {
 	public MovieReview getMovieReview(String user, String title,
-			Date release_date);
+			String release_date);
 
 	public ArrayList<MovieReview> getAllMovieReviews(String title,
-			Date release_date);
+			String release_date);
 
 	public MovieReview writeMovieReview(String user, String title,
-			Date release_date, String review, int rank);
+			String release_date, String review, int rank);
 
 	public BookReview getBookReview(String user, int isbn);
 

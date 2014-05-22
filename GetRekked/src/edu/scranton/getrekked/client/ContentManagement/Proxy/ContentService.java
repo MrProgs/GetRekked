@@ -13,7 +13,7 @@ import edu.scranton.getrekked.shared.Movie;
 public interface ContentService extends RemoteService {
 	public Book getBook(int isbn);
 
-	public Movie getMovie(String title, Date release_date);
+	public Movie getMovie(String title, String release_date);
 
 	public Game getGame(int barcode);
 }

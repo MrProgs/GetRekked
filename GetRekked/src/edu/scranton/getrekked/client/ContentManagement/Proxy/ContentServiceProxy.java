@@ -15,7 +15,7 @@ public class ContentServiceProxy {
 		contentService.getBook(isbn, callbackGetBook);
 	}
 
-	public void getMovie(String title, Date release_date,
+	public void getMovie(String title, String release_date,
 			AsyncCallback<Movie> callbackGetMovie) {
 		ContentServiceAsync contentService = GWT.create(ContentService.class);
 		contentService.getMovie(title, release_date, callbackGetMovie);

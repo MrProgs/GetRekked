@@ -31,21 +31,21 @@ public class ReviewServiceProxy {
 				callbackWriteBookReview);
 	}
 
-	public void getMovieReview(String user, String title, Date release_date,
+	public void getMovieReview(String user, String title, String release_date,
 			AsyncCallback<MovieReview> callbackGetMovieReview) {
 		ReviewServiceAsync reviewService = GWT.create(ReviewService.class);
 		reviewService.getMovieReview(user, title, release_date,
 				callbackGetMovieReview);
 	}
 
-	public void getAllMovieReviews(String title, Date release_date,
+	public void getAllMovieReviews(String title, String release_date,
 			AsyncCallback<ArrayList<MovieReview>> callbackGetMovieReviews) {
 		ReviewServiceAsync reviewService = GWT.create(ReviewService.class);
 		reviewService.getAllMovieReviews(title, release_date,
 				callbackGetMovieReviews);
 	}
 
-	public void writeMovieReview(String user, String title, Date release_date,
+	public void writeMovieReview(String user, String title, String release_date,
 			String review, int rank,
 			AsyncCallback<MovieReview> callbackWriteMovieReview) {
 		ReviewServiceAsync reviewService = GWT.create(ReviewService.class);

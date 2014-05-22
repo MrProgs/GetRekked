@@ -1,11 +1,12 @@
 package edu.scranton.getrekked.client.ReviewManagement;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Locale;
+import java.util.regex.Pattern;
+
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
@@ -217,14 +218,9 @@ public class ReadReviewPresenter {
 				}
 			};
 			String title = this.intent.get("Title");
-			Date release_date = null;
-			try {
-				release_date = new SimpleDateFormat("MM/dd/YY", Locale.ENGLISH)
-						.parse(this.intent.get("Release_date"));
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			Date date = new Date("MM/dd/yy");
+			String release_date = DateTimeFormat.getShortDateFormat().format(date);
+
 			contentServiceProxy.getMovie(title, release_date, callbackGetMovie);
 		} else { // intent.get("Category").equals("Game")
 			AsyncCallback<Game> callbackGetGame = new AsyncCallback<Game>() {
