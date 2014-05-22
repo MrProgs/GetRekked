@@ -1,11 +1,11 @@
-package edu.scranton.getrekked.ReviewManagement;
+package edu.scranton.getrekked.client.RecommendationManagement;
 
 import java.util.HashMap;
 
-import edu.scranton.getrekked.ReviewManagement.ReviewPresenter.View;
 import edu.scranton.getrekked.client.AppController;
+import edu.scranton.getrekked.client.RecommendationManagement.RecommendationPresenter.View;
 
-public class ReviewPresenter {
+public class RecommendationPresenter {
 	public static interface View{
 		public void display();
 	}
@@ -38,7 +38,7 @@ public class ReviewPresenter {
 		}
 	}
 	
-	public void writeReview(String review, String ranking){
+	public void makeRecommendation(){
 		
 	}
 }

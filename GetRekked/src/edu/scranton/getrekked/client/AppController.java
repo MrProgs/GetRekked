@@ -3,13 +3,18 @@ package edu.scranton.getrekked.client;
 import java.util.HashMap;
 //import edu.scranton.bi.client.AppController;
 
-import edu.scranton.getrekked.RecommendationManagement.RecommendationPresenter;
-import edu.scranton.getrekked.RecommendationManagement.RecommendationView;
-import edu.scranton.getrekked.ReviewManagement.ReviewPresenter;
-import edu.scranton.getrekked.ReviewManagement.ReviewView;
+
+
 import edu.scranton.getrekked.client.Authentication.LoginPresenter;
 import edu.scranton.getrekked.client.Authentication.LoginView;
 import edu.scranton.getrekked.client.Authentication.Proxy.AuthenticationServiceProxy;
+import edu.scranton.getrekked.client.RecommendationManagement.RecommendationPresenter;
+import edu.scranton.getrekked.client.RecommendationManagement.RecommendationView;
+import edu.scranton.getrekked.client.ReviewManagement.WriteReviewPresenter;
+import edu.scranton.getrekked.client.ReviewManagement.WriteReviewView;
+import edu.scranton.getrekked.client.ReviewManagement.ReadReviewPresenter;
+import edu.scranton.getrekked.client.ReviewManagement.ReadReviewView;
+import edu.scranton.getrekked.client.ReviewManagement.Proxy.ReviewServiceProxy;
 import edu.scranton.getrekked.client.UserManagement.CreateProfilePresenter;
 import edu.scranton.getrekked.client.UserManagement.CreateProfileView;
 import edu.scranton.getrekked.client.UserManagement.UpdateProfilePresenter;
@@ -24,8 +29,11 @@ public class AppController {
 	private UserServiceProxy userServiceProxy = null;
 	private RecommendationView recommendationView = null;
 	private RecommendationPresenter recommendationPresenter = null;
-	private ReviewPresenter reviewPresenter = null;
-	private ReviewView reviewView= null;
+	private WriteReviewPresenter writeReviewPresenter = null;
+	private WriteReviewView writeReviewView= null;
+	private ReadReviewPresenter readReviewPresenter = null;
+	private ReadReviewView readReviewView = null;
+	private ReviewServiceProxy reviewServiceProxy = null;
 	private LoginPresenter loginPresenter = null;
 	private LoginView loginView = null;
 	private CreateProfilePresenter createProfilePresenter = null;
@@ -49,8 +57,10 @@ public class AppController {
 	private AppController(){
 		recommendationPresenter = new RecommendationPresenter();
 		recommendationView = new RecommendationView(recommendationPresenter);
-		reviewPresenter = new ReviewPresenter();
-		reviewView = new ReviewView(reviewPresenter);
+		writeReviewPresenter = new WriteReviewPresenter(reviewServiceProxy);
+		writeReviewView = new WriteReviewView(writeReviewPresenter);
+		readReviewPresenter = new ReadReviewPresenter(reviewServiceProxy);
+		readReviewView = new ReadReviewView(readReviewPresenter);
 		loginPresenter = new LoginPresenter(authenticationServiceProxy);
 		loginView = new LoginView();
 		createProfilePresenter = new CreateProfilePresenter(userServiceProxy);
@@ -75,8 +85,11 @@ public class AppController {
 	}
 	
 	public void go(HashMap<String,String> intent){
-		if(intent.get("Action").equals("review")){
-			reviewPresenter.begin();
+		if(intent.get("Action").equals("write review")){
+			writeReviewPresenter.begin();
+		}
+		if(intent.get("Action").equals("read review")){
+			readReviewPresenter.begin();
 		}
 		if(intent.get("Action").equals("recommend")){
 			recommendationPresenter.begin();
