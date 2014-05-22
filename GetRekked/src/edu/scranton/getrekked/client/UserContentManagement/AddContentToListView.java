@@ -1,5 +1,7 @@
 package edu.scranton.getrekked.client.UserContentManagement;
 
+import java.lang.Integer;
+import java.util.ArrayList;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
@@ -14,7 +16,7 @@ import edu.scranton.getrekked.shared.Book;
 import edu.scranton.getrekked.shared.Game;
 import edu.scranton.getrekked.shared.Movie;
 
-public class AddContentToListView {
+public class AddContentToListView implements AddContentToListPresenter.View{
 	private DecoratorPanel mainPanel = null;
 	private AddContentToListPresenter presenter;
 	private FlexTable bookTable = new FlexTable();
@@ -149,13 +151,21 @@ public class AddContentToListView {
 		String title = bookTitleBox.getText();
 		String author = authorBox.getText();
 		String publisher = bookPublisherBox.getText();
-		int isbn = Integer.valueOf(isbnBox.getText());
+		String isbn = isbnBox.getText();
 		String language = languageBox.getText();
-		String genre = genreBox.getText();
+		ArrayList<String> genres = new ArrayList<String>();
+		genres.add(genreBox.getText());
 		int numOfPages = Integer.valueOf(numOfPagesBox.getText());
 		String copyRight = copyRightBox.getText();
-		return new Book(isbn, title, author, publisher, language, genre, numOfPages,
-				copyRight);
+		Book book = new Book(isbn);
+		book.setAuthor(author);
+		book.setCopyRight(copyRight);
+		book.setTitle(title);
+		book.setGenres(genres);
+		book.setLanguage(language);
+		book.setPublisher(publisher);
+		book.setNumOfPages(numOfPages);
+		return book;
 	}
 
 	private Game getGameInfo() {

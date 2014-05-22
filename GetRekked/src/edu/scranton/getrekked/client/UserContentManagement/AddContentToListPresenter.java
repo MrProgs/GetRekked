@@ -38,7 +38,7 @@ public class AddContentToListPresenter {
 				}
 			};
 			System.out.println(book.toString());
-			contentServiceProxy.addBook(book.getIsbn(), callbackAddStudent);
+			contentServiceProxy.addBook(Integer.parseInt(book.getIsbn()), callbackAddStudent);
 	}
 	
 	public void addMovie(Movie movie){
