@@ -2,7 +2,7 @@ package edu.scranton.getrekked.client.RecommendationManagement;
 
 public class RecommendationView {
 
-	public RecommendationView(RecommendationPresenter presenter){
-		
+	public RecommendationView(RecommendationPresenter presenter) {
+
 	}
 }

@@ -59,8 +59,7 @@ public class ViewProfileView implements ViewProfilePresenter.View {
 		for (int i = 0; i < users.size(); i++) {
 			user = users.get(i);
 			UserTable.setWidget(i, 0, new CheckBox());
-			UserTable
-					.setText(i, 1, new Integer(user.getUserName()).toString());
+			UserTable.setText(i, 1, new Integer(user.getUserName()).toString());
 			UserTable.setText(i, 2, user.getLast_name());
 			UserTable.setText(i, 3, user.getFirst_name());
 			UserTable.setText(i, 4, user.getEmail());
@@ -94,22 +93,21 @@ public class ViewProfileView implements ViewProfilePresenter.View {
 			}
 		}
 	}
-	
-	private class EditButtonClickHandler implements ClickHandler{
-		public void onClick(ClickEvent event){
+
+	private class EditButtonClickHandler implements ClickHandler {
+		public void onClick(ClickEvent event) {
 			String studentID = null;
 			for (int i = 0; i < UserTable.getRowCount(); i++) {
-				if (((CheckBox)UserTable.getWidget(i, 0)).getValue()) {
+				if (((CheckBox) UserTable.getWidget(i, 0)).getValue()) {
 					studentID = UserTable.getText(i, 1);
 					break;
-					}
-				}
-			if (studentID != null) {
-				presenter.editStudents(studentID);
-				}
-			else {
-				return;
 				}
 			}
+			if (studentID != null) {
+				presenter.editStudents(studentID);
+			} else {
+				return;
+			}
+		}
 	}
 }

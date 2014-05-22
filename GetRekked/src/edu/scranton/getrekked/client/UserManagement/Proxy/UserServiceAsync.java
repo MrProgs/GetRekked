@@ -11,7 +11,8 @@ public interface UserServiceAsync {
 
 	void getAllUsers(AsyncCallback<ArrayList<User>> callbackGetAllUsers);
 
-	void deleteUsers(ArrayList<Integer> studentIds, AsyncCallback<Void> callbackDeleteUser);
+	void deleteUsers(ArrayList<Integer> studentIds,
+			AsyncCallback<Void> callbackDeleteUser);
 
 	void addUser(User student, AsyncCallback<Void> callback);
 

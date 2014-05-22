@@ -1,6 +1,5 @@
 package edu.scranton.getrekked.client.ReviewManagement;
 
-import java.lang.Integer;
 import java.util.ArrayList;
 
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -9,7 +8,6 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DecoratorPanel;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 
@@ -37,8 +35,8 @@ public class ReadReviewView {
 	private ArrayList<GameReview> gameReviews;
 	private Game mGame;
 	private User reviewer;
-	
-	public ReadReviewView(ReadReviewPresenter presenter){
+
+	public ReadReviewView(ReadReviewPresenter presenter) {
 		this.dispatcher = presenter;
 		mainPanel = new DecoratorPanel();
 		HorizontalPanel menuPanel = new HorizontalPanel();
@@ -49,56 +47,56 @@ public class ReadReviewView {
 				dispatcher.cancelOperation();
 			}
 		});
-		
+
 	}
-	
-	public void display(){
+
+	public void display() {
 		resetInputBoxes();
 		RootPanel.get().clear();
 		RootPanel.get().add(mainPanel);
 	}
-	
-	private void resetInputBoxes(){
-		
+
+	private void resetInputBoxes() {
+
 	}
-	
-	public void setBookData(Book book){
+
+	public void setBookData(Book book) {
 		mBook = book;
 	}
-	
-	public void setBookListData(ArrayList<BookReview> reviews){
+
+	public void setBookListData(ArrayList<BookReview> reviews) {
 		bookReviews = reviews;
 	}
-	
-	public void setBookReviewData(BookReview review){
+
+	public void setBookReviewData(BookReview review) {
 		bookReview = review;
 	}
-	
-	public void setMovieData(Movie movie){
+
+	public void setMovieData(Movie movie) {
 		mMovie = movie;
 	}
-	
-	public void setMovieListData(ArrayList<MovieReview> reviews){
+
+	public void setMovieListData(ArrayList<MovieReview> reviews) {
 		movieReviews = reviews;
 	}
-	
-	public void setMovieReviewData(MovieReview review){
+
+	public void setMovieReviewData(MovieReview review) {
 		movieReview = review;
 	}
-	
-	public void setGameData(Game game){
+
+	public void setGameData(Game game) {
 		mGame = game;
 	}
-	
-	public void setGameListData(ArrayList<GameReview> reviews){
+
+	public void setGameListData(ArrayList<GameReview> reviews) {
 		gameReviews = reviews;
 	}
-	
-	public void setGameReviewData(GameReview review){
+
+	public void setGameReviewData(GameReview review) {
 		gameReview = review;
 	}
-	
-	public void setUserData(User user){
+
+	public void setUserData(User user) {
 		reviewer = user;
 	}
 }

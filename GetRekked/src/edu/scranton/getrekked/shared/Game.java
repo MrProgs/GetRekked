@@ -8,8 +8,9 @@ public class Game {
 	private String esrb;
 	private Date release_date;
 	private String title;
-	
-	public Game(int barcode, String publisher, String esrb, Date release_date, String title){
+
+	public Game(int barcode, String publisher, String esrb, Date release_date,
+			String title) {
 		this.barcode = barcode;
 		this.publisher = publisher;
 		this.esrb = esrb;
@@ -56,5 +57,5 @@ public class Game {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
+
 }

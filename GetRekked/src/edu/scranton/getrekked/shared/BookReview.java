@@ -5,8 +5,8 @@ public class BookReview {
 	private int isbn;
 	private int rating;
 	private String user_comment;
-	
-	public BookReview(String username, int isbn, int rating, String comment){
+
+	public BookReview(String username, int isbn, int rating, String comment) {
 		this.username = username;
 		this.isbn = isbn;
 		this.rating = rating;
@@ -44,6 +44,5 @@ public class BookReview {
 	public void setUser_comment(String user_comment) {
 		this.user_comment = user_comment;
 	}
-	
-	
+
 }

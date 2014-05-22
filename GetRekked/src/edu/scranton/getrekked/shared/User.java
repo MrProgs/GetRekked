@@ -12,8 +12,8 @@ public class User {
 	private String address;
 
 	public User(String username, String pass, String first_name,
-			String last_name, String email, String date_of_birth, String gender,
-			String phone_number, String address) {
+			String last_name, String email, String date_of_birth,
+			String gender, String phone_number, String address) {
 		super();
 		this.username = username;
 		this.password = pass;

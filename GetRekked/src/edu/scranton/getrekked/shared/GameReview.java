@@ -5,8 +5,8 @@ public class GameReview {
 	private int barcode;
 	private int rating;
 	private String user_comment;
-	
-	public GameReview(String username, int barcode, int rating, String comment){
+
+	public GameReview(String username, int barcode, int rating, String comment) {
 		this.username = username;
 		this.barcode = barcode;
 		this.rating = rating;
@@ -44,6 +44,5 @@ public class GameReview {
 	public void setUser_comment(String user_comment) {
 		this.user_comment = user_comment;
 	}
-	
-	
+
 }

@@ -7,5 +7,5 @@ import edu.scranton.getrekked.shared.User;
 
 @RemoteServiceRelativePath("authenticationService")
 public interface AuthenticationService extends RemoteService {
-   public User authenticate(String userName, String password);
+	public User authenticate(String userName, String password);
 }

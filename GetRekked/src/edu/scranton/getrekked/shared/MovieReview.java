@@ -1,14 +1,16 @@
 package edu.scranton.getrekked.shared;
+
 import java.util.Date;
+
 public class MovieReview {
 	private String username;
 	private String title;
 	private int rating;
 	private Date release_date;
 	private String user_comment;
-	
-	public MovieReview(String username, String title, int rating, Date release_date,
-			String comment){
+
+	public MovieReview(String username, String title, int rating,
+			Date release_date, String comment) {
 		this.username = username;
 		this.title = title;
 		this.rating = rating;
@@ -55,6 +57,5 @@ public class MovieReview {
 	public void setRating(int rating) {
 		this.rating = rating;
 	}
-	
-	
+
 }

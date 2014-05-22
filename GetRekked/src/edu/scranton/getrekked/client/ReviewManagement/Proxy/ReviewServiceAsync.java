@@ -1,34 +1,42 @@
 package edu.scranton.getrekked.client.ReviewManagement.Proxy;
 
-import java.util.Date;
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
-import edu.scranton.getrekked.shared.MovieReview;
-import edu.scranton.getrekked.shared.GameReview;
 import edu.scranton.getrekked.shared.BookReview;
-
+import edu.scranton.getrekked.shared.GameReview;
+import edu.scranton.getrekked.shared.MovieReview;
 
 public interface ReviewServiceAsync {
-	
-	void getMovieReview(String user, String title, Date release_date, AsyncCallback<MovieReview> callbackGetMovieReview);
-	
-	void getAllMovieReviews(String title, Date release_date, AsyncCallback<ArrayList<MovieReview>> callbackGetMovieReviews);
-	
-	void writeMovieReview(String user, String title, Date release_date, String review, int rank, 
+
+	void getMovieReview(String user, String title, Date release_date,
+			AsyncCallback<MovieReview> callbackGetMovieReview);
+
+	void getAllMovieReviews(String title, Date release_date,
+			AsyncCallback<ArrayList<MovieReview>> callbackGetMovieReviews);
+
+	void writeMovieReview(String user, String title, Date release_date,
+			String review, int rank,
 			AsyncCallback<MovieReview> callbackWriteMovieReview);
-	
-	void getBookReview(String user, int isbn, AsyncCallback<BookReview> callbackGetBookReview);
-	
-	void getAllBookReviews(int isbn, AsyncCallback<ArrayList<BookReview>> callbackGetBookReviews);
-	
-	void writeBookReview(String user, int isbn, String review, int rank, AsyncCallback<BookReview> callbackWriteBookReview);
-	
-	void getGameReview(String user, int barcode, AsyncCallback<GameReview> callbackGetGameReview);
-	
-	void getAllGameReviews(int barcode, AsyncCallback<ArrayList<GameReview>> callbackGetGameReviews);
-	
-	void writeGameReview(String user, int barcode, String review, int rank, AsyncCallback<GameReview> callbackWriteGameReview);
+
+	void getBookReview(String user, int isbn,
+			AsyncCallback<BookReview> callbackGetBookReview);
+
+	void getAllBookReviews(int isbn,
+			AsyncCallback<ArrayList<BookReview>> callbackGetBookReviews);
+
+	void writeBookReview(String user, int isbn, String review, int rank,
+			AsyncCallback<BookReview> callbackWriteBookReview);
+
+	void getGameReview(String user, int barcode,
+			AsyncCallback<GameReview> callbackGetGameReview);
+
+	void getAllGameReviews(int barcode,
+			AsyncCallback<ArrayList<GameReview>> callbackGetGameReviews);
+
+	void writeGameReview(String user, int barcode, String review, int rank,
+			AsyncCallback<GameReview> callbackWriteGameReview);
 
 }
