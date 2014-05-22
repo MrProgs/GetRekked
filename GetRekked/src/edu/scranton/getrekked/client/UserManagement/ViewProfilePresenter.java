@@ -32,7 +32,7 @@ public class ViewProfilePresenter {
 		if (AppController.instance().isUserLoggedIn()) {
 			getAllUsers();
 		} else {
-			intent.put("action","login");
+			intent.put("Action","login");
 			AppController.instance().go(intent);
 		}
 	}
@@ -41,7 +41,7 @@ public class ViewProfilePresenter {
 
 			public void onFailure(Throwable caught) {
 				System.out.println("server error");
-				intent.put("action", "home");
+				intent.put("Action", "home");
 				AppController.instance().go(intent);
 			}
 
@@ -53,37 +53,33 @@ public class ViewProfilePresenter {
 		userServiceProxy.getAllUsers(callbackGetUsers);
 	}
 	
-	public void addStudent() {
-		System.out.println("add student");
-		intent.put("action", "addStudent");
+	public void addContent() {
+		intent.put("Action", "addStudent");
 		AppController.instance().go(intent);
 	}
 
-	public void deleteStudents(ArrayList<Integer> studentIDs) {
-		System.out.println("delete students");
+	public void deleteContent(ArrayList<Integer> studentIDs) {
 		System.out.println(studentIDs.toString());
 		AsyncCallback<Void> callbackDeleteStudents = new AsyncCallback<Void>() {
 
 			public void onFailure(Throwable caught) {
 				System.out.println("server error");
-				intent.put("action", "home");
+				intent.put("Action", "home");
 				AppController.instance().go(intent);
 			}
 
 			public void onSuccess(Void v) {
-				System.out.println("Students deleted");
-				intent.put("action", "home");
+				intent.put("Action", "home");
 				AppController.instance().go(intent);
 			}
 		};
 		userServiceProxy.deleteUsers(studentIDs, callbackDeleteStudents);
 	}
 	
-	public void editStudents(String studentID){
-		System.out.println("edit student");
-		System.out.println(studentID.toString());
-		this.intent.put("action", "editStudent");
-		this.intent.put("studentID", studentID);
+	public void writeReview(String content){
+		System.out.println(content.toString());
+		this.intent.put("Action", "write review");
+		this.intent.put("identifier", content);
 		AppController.instance().go(intent);
 	}
 }

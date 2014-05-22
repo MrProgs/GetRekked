@@ -13,6 +13,7 @@ public class UserIMS implements EntryPoint {
    public void onModuleLoad() {
 	  HashMap<String,String> intent = new HashMap<String,String>();
 	  intent.put("Action", "login");
+	  System.out.println("UserIMS");
       AppController.instance().go(intent);
    }
 }

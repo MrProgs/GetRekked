@@ -93,6 +93,7 @@ public class AppController {
 			recommendationPresenter.begin();
 		}
 		if(intent.get("Action").equals("login")){
+			System.out.println("login");
 			loginPresenter.begin();
 		}
 		if(intent.get("Action").equals("createProfile")){

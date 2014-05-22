@@ -45,7 +45,7 @@ public class LoginView implements LoginPresenter.View {
 		});
 		createUserButton.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
-				intent.put("action", "createProfile");
+				intent.put("Action", "createProfile");
 				AppController.instance().go(intent);
 			}
 		});
