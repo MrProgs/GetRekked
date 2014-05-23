@@ -6,12 +6,14 @@ import java.util.HashMap;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import edu.scranton.getrekked.client.AppController;
+import edu.scranton.getrekked.client.ContentManagement.Proxy.ContentServiceProxy;
 import edu.scranton.getrekked.client.UserManagement.Proxy.UserServiceProxy;
+import edu.scranton.getrekked.shared.Book;
 import edu.scranton.getrekked.shared.User;
 
 public class ViewProfilePresenter {
 	public static interface View {
-		public void setData(ArrayList<User> students);
+		public void setData(ArrayList<User> users, ArrayList<Book> books);
 
 		public void display();
 	}
@@ -19,6 +21,8 @@ public class ViewProfilePresenter {
 	private View view = null;
 	private UserServiceProxy userServiceProxy = null;
 	private HashMap<String, String> intent = new HashMap<String, String>();
+	
+	private ArrayList<Book> list = new ArrayList<Book>();
 
 	public ViewProfilePresenter(UserServiceProxy proxy) {
 		userServiceProxy = proxy;
@@ -39,25 +43,43 @@ public class ViewProfilePresenter {
 	}
 
 	private void getAllUsers() {
+		// Async call to get book isbn whatever
+		// in onSuccess(Book book) this.list.add(book);
+		String isbn = "9780547928227";
+		AsyncCallback<Book> callbackGetBook = new AsyncCallback<Book>() {
+
+			public void onFailure(Throwable caught) {
+				System.out.println("server error");
+				intent.put("Action", "home");
+				AppController.instance().go(intent);
+			}
+
+			public void onSuccess(Book b) {
+				list.add(b);
+				view.display();
+			}
+		};
+		(new ContentServiceProxy()).getBook(isbn, callbackGetBook); // Hard coded for simplicity
+		
 		AsyncCallback<ArrayList<User>> callbackGetUsers = new AsyncCallback<ArrayList<User>>() {
 
 			public void onFailure(Throwable caught) {
 				System.out.println("server error");
-				intent.put("action", "home");
+				intent.put("Action", "home");
 				AppController.instance().go(intent);
 			}
 
 			public void onSuccess(ArrayList<User> user) {
-				view.setData(user);
+				view.setData(user, list);
 				view.display();
 			}
 		};
 		userServiceProxy.getAllUsers(callbackGetUsers);
 	}
 
-	public void addStudent() {
-		System.out.println("add student");
-		intent.put("action", "addStudent");
+	public void addBook() {
+		System.out.println("add book");
+		intent.put("action", "addContent");
 		AppController.instance().go(intent);
 	}
 

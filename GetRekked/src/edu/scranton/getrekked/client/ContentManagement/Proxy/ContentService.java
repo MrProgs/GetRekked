@@ -10,7 +10,7 @@ import edu.scranton.getrekked.shared.Movie;
 
 @RemoteServiceRelativePath("contentService")
 public interface ContentService extends RemoteService {
-	public Book getBook(int isbn);
+	public Book getBook(String isbn);
 
 	public Movie getMovie(String title, int release_year);
 
@@ -18,7 +18,7 @@ public interface ContentService extends RemoteService {
 	
 	public void addMovie(String name, int release_year);
 	
-	public void addBook(int isbn);
+	public void addBook(Book book);
 	
 	public void addGame(int barcode);
 }

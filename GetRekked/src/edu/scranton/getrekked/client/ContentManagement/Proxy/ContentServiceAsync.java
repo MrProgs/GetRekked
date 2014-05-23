@@ -9,14 +9,14 @@ import edu.scranton.getrekked.shared.Movie;
 
 public interface ContentServiceAsync {
 
-	void getBook(int isbn, AsyncCallback<Book> callbackGetBook);
+	void getBook(String isbn, AsyncCallback<Book> callbackGetBook);
 
 	void getMovie(String title, int release_year,
 			AsyncCallback<Movie> callbackGetMovie);
 
 	void getGame(int barcode, AsyncCallback<Game> callbackGetGame);
 
-	void addBook(int isbn, AsyncCallback<Void> callbackGetBook);
+	void addBook(Book book, AsyncCallback<Void> callbackGetBook);
 
 	void addMovie(String title, int release_year,
 			AsyncCallback<Void> callbackGetMovie);
