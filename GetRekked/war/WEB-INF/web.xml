@@ -6,6 +6,21 @@
          xmlns="http://java.sun.com/xml/ns/javaee">
 
   <!-- Servlets -->
+   <!-- Servlets 
+  <servlet>
+    <servlet-name>StudentServiceServlet</servlet-name>
+    <servlet-class>edu.scranton.bi.server.StudentManagement.StudentServiceImpl</servlet-class>
+  </servlet>-->
+    <servlet>
+    <servlet-name>AuthenticationServlet</servlet-name>
+    <servlet-class>edu.scranton.getrekked.server.Authentication.AuthenticationServiceImpl</servlet-class>
+  </servlet>
+  
+    <servlet-mapping>
+    <servlet-name>AuthenticationServlet</servlet-name>
+    <url-pattern>/getrekked/authenticationService</url-pattern>
+  </servlet-mapping>
+  
   
   <!-- Default page to serve -->
   <welcome-file-list>

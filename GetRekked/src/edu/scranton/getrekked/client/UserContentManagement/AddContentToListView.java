@@ -183,7 +183,11 @@ public class AddContentToListView implements AddContentToListPresenter.View{
 		int MPAARating = Integer.valueOf(bookPublisherBox.getText());
 		String language = languageBox.getText();
 		int runtime = Integer.valueOf(runTimeBox.getText());
-		return new Movie(title, release_year, MPAARating, language, runtime);
+		Movie movie = new Movie(title, release_year);
+		movie.setMPAA_rating(MPAARating);
+		movie.setLanguage(language);
+		movie.setRuntime(runtime);
+		return movie;
 	}
 
 	private class AddBookButtonClickHandler implements ClickHandler {

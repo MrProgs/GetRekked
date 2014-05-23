@@ -24,8 +24,8 @@ public interface ReviewService extends RemoteService {
 
 	public ArrayList<BookReview> getAllBookReviews(int isbn);
 
-	public BookReview writeBookReview(String user, int isbn, String review,
-			int rank);
+	public BookReview writeBookReview(String user, String isbn, String review,
+			String rank);
 
 	public GameReview getGameReview(String user, int barcode);
 

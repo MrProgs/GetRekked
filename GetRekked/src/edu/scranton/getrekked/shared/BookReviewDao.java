@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.lang.Integer;
 
 import edu.scranton.getrekked.database.Connection.DatabaseHelper;
 
@@ -27,11 +28,24 @@ public class BookReviewDao {
         this.mDb.close();
    }
     
-    public void insertBookReview(BookReview review){
-    	insertBookReviewInfo(review);
+    
+    public void insertBookReview(String user, String isbn, String review,
+			String rank){
+    	String sql = "INSERT INTO book_review VALUES(?, ?, ?, ?)";
+    	try (PreparedStatement st = mConnection.prepareStatement(sql)) {
+
+            st.setString(1, user);
+            st.setString(2, isbn);
+            st.setString(3, rank);
+            st.setString(4, review);
+            st.executeUpdate();              
+       } catch (SQLException e) {
+            e.printStackTrace();
+       } 
+   
     }
     
-    public void insertBookReviewInfo(BookReview review){
-    	String sql = "INSERT INTO book_review VALUES(?, ?, ?, ?)";
-    }
+    //public void getBookReview(Book book){
+    	//String sql = "SELECT * FROM book_review where username ="
+   // }
 }

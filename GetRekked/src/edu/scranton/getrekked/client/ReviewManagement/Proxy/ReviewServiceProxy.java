@@ -23,7 +23,7 @@ public class ReviewServiceProxy {
 		reviewService.getAllBookReviews(isbn, callbackGetBookReviews);
 	}
 
-	public void writeBookReview(String user, int isbn, String review, int rank,
+	public void writeBookReview(String user, String isbn, String review, String rank,
 			AsyncCallback<BookReview> callbackWriteBookReview) {
 		ReviewServiceAsync reviewService = GWT.create(ReviewService.class);
 		reviewService.writeBookReview(user, isbn, review, rank,

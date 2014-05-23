@@ -1,29 +1,34 @@
 package edu.scranton.getrekked.shared;
 
-public class User {
+import java.io.Serializable;
+
+
+public class User implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private String username;
 	private String password;
 	private String first_name;
 	private String last_name;
 	private String email;
 	private String date_of_birth;
-	private String gender;
+	private char gender;
 	private String phone_number;
 	private String address;
-
-	public User(String username, String pass, String first_name,
-			String last_name, String email, String date_of_birth,
-			String gender, String phone_number, String address) {
+	
+	public User(){
+		
+	}
+	public User(String username, String pass) {
 		super();
 		this.username = username;
 		this.password = pass;
-		this.first_name = first_name;
+		/*this.first_name = first_name;
 		this.last_name = last_name;
 		this.email = email;
 		this.date_of_birth = date_of_birth;
 		this.gender = gender;
 		this.phone_number = phone_number;
-		this.address = address;
+		this.address = address;*/
 	}
 
 	public String getUserName() {
@@ -74,11 +79,11 @@ public class User {
 		this.date_of_birth = date_of_birth;
 	}
 
-	public String getGender() {
+	public char getGender() {
 		return gender;
 	}
 
-	public void setGender(String gender) {
+	public void setGender(char gender) {
 		this.gender = gender;
 	}
 

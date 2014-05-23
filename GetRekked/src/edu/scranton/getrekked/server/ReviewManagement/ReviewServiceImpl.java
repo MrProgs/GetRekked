@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import edu.scranton.getrekked.client.ReviewManagement.Proxy.ReviewService;
 import edu.scranton.getrekked.shared.BookReview;
+import edu.scranton.getrekked.shared.BookReviewDao;
 import edu.scranton.getrekked.shared.GameReview;
 import edu.scranton.getrekked.shared.MovieReview;
 
@@ -35,7 +36,7 @@ ReviewService {
 
 	@Override
 	public BookReview getBookReview(String user, int isbn) {
-		// TODO Auto-generated method stub
+		//TODO Auto-generated method stub
 		return null;
 	}
 
@@ -46,9 +47,10 @@ ReviewService {
 	}
 
 	@Override
-	public BookReview writeBookReview(String user, int isbn, String review,
-			int rank) {
-		// TODO Auto-generated method stub
+	public BookReview writeBookReview(String user, String isbn, String review,
+			String rank) {
+		BookReviewDao dao = new BookReviewDao();
+		dao.insertBookReview(user, isbn, review, rank);
 		return null;
 	}
 

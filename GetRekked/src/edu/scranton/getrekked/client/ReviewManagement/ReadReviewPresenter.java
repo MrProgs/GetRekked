@@ -190,7 +190,7 @@ public class ReadReviewPresenter {
 	}
 
 	public void getContentInfo() {
-		if (intent.get("Category").equals("Book")) {
+		//if (intent.get("Category").equals("Book")) {
 			AsyncCallback<Book> callbackGetBook = new AsyncCallback<Book>() {
 
 				public void onFailure(Throwable caught) {
@@ -208,7 +208,7 @@ public class ReadReviewPresenter {
 			int isbn = Integer.parseInt(this.intent.get("ISBN"));
 			contentServiceProxy.getBook(isbn, callbackGetBook);
 			
-		} else if (intent.get("Category").equals("Movie")) {
+		/*} else if (intent.get("Category").equals("Movie")) {
 			AsyncCallback<Movie> callbackGetMovie = new AsyncCallback<Movie>() {
 
 				public void onFailure(Throwable caught) {
@@ -246,7 +246,7 @@ public class ReadReviewPresenter {
 			
 			int barcode = Integer.parseInt(this.intent.get("Barcode"));
 			contentServiceProxy.getGame(barcode, callbackGetGame);
-		}
+		}*/
 	}
 
 	/*

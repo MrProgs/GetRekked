@@ -97,8 +97,15 @@ public class CreateProfileView implements CreateProfilePresenter.View {
 		String dob = dateOfBirthBox.getText();
 		String gender = genderBox.getText();
 		String address = addressBox.getText();
-		return new User(userName, password, firstName, lastName, email, number,
-				dob, gender, address);
+		User user = new User(userName, password);
+		user.setFirst_name(firstName);
+		user.setLast_name(lastName);
+		user.setEmail(email);
+		user.setPhone_number(number);
+		user.setDate_of_birth(dob);
+		user.setGender(gender.charAt(0));
+		user.setAddress(address);
+		return user;
 	}
 
 	private class AddUserButtonClickHandler implements ClickHandler {

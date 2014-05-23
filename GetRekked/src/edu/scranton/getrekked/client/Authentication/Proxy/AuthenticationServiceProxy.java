@@ -6,11 +6,8 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import edu.scranton.getrekked.shared.User;
 
 public class AuthenticationServiceProxy {
-	public void authenticate(String userName, String password,
-			AsyncCallback<User> callbackAuthenticate) {
-		AuthenticationServiceAsync authenticationService = GWT
-				.create(AuthenticationService.class);
-		authenticationService.authenticate(userName, password,
-				callbackAuthenticate);
+	public void authenticate(String userName, String password,AsyncCallback<User> callbackAuthenticate) {
+		AuthenticationServiceAsync authenticationService = GWT.create(AuthenticationService.class);
+		authenticationService.authenticate(userName, password,callbackAuthenticate);
 	}
 }

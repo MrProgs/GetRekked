@@ -27,4 +27,5 @@
 
   <!-- allow Super Dev Mode -->
   <add-linker name="xsiframe"/>
+  <!--  <servlet class=edu.scranton.getrekked.client.Authentication.Proxy.AuthenticationService" path="/authenticationService" -->
 </module>

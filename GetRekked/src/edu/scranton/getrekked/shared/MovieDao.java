@@ -42,10 +42,10 @@ public class MovieDao {
 
              st.setString(1, Movie.getTitle());
              st.setInt(2, Movie.getRelease_year());
-             st.setString(3, Movie.getImage());
-             st.setString(4, Movie.getMPAA_rating());
+             st.setString(3, Movie.getImageLink());
+             st.setString(4, Integer.toString(Movie.getMPAA_rating()));
              st.setString(5, Movie.getLanguage());
-             st.setString(6, Movie.getRuntime());
+             st.setString(6, Integer.toString(Movie.getRuntime()));
              
 
              st.executeUpdate();              
@@ -53,12 +53,12 @@ public class MovieDao {
              e.printStackTrace();
         } 
     }
-    
+    //there is no movie_genre tablel!
     private void insertMovieGenres(Movie Movie) {
     	String sql = "INSERT INTO Movie_Genre VALUES(?, ?)";
     	for(int i = 0; i < Movie.getGenres().size(); i++) {
     		try(PreparedStatement st = mConnection.prepareStatement(sql)) {
-    			st.setString(1, Movie.getIsbn());
+    			st.setString(1, Movie.getTitle());
     			st.setString(2, Movie.getGenres().get(i));
     			
     			st.executeUpdate();
@@ -72,7 +72,7 @@ public class MovieDao {
     	String sql = "INSERT INTO Movie_Award VALUES(?, ?)";
     	for(int i = 0; i < Movie.getAwards().size(); i++) {
     		try(PreparedStatement st = mConnection.prepareStatement(sql)) {
-    			st.setString(1, Movie.getIsbn());
+    			st.setString(1, Movie.getTitle());
     			st.setString(2, Movie.getAwards().get(i));
     			
     			st.executeUpdate();
@@ -105,7 +105,7 @@ public class MovieDao {
     
     private ArrayList<Movie> getAwards(ArrayList<Movie> Movies) {
     	for(int i = 0; i < Movies.size(); i++) {
-            String sql = "SELECT * FROM Movie_Awards WHERE isbn='" + Movies.get(i).getIsbn() + "'";
+            String sql = "SELECT * FROM Movie_Awards WHERE title='" + Movies.get(i).getTitle() + "'";
 
             try (Statement st = mConnection.createStatement()) {
                  ResultSet rs = st.executeQuery(sql);

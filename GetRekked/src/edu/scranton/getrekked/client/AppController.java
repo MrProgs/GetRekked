@@ -117,9 +117,9 @@ public class AppController {
 		if (intent.get("Action").equals("write review")) {
 			writeReviewPresenter.begin();
 		}
-		if (intent.get("Action").equals("read review")) {
+		/*if (intent.get("Action").equals("read review")) {
 			readReviewPresenter.begin();
-		}
+		}*/
 		if (intent.get("Action").equals("recommend")) {
 			recommendationPresenter.begin();
 		}

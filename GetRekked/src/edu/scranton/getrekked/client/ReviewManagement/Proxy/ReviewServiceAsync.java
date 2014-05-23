@@ -26,7 +26,7 @@ public interface ReviewServiceAsync {
 	void getAllBookReviews(int isbn,
 			AsyncCallback<ArrayList<BookReview>> callbackGetBookReviews);
 
-	void writeBookReview(String user, int isbn, String review, int rank,
+	void writeBookReview(String user, String isbn, String review, String rank,
 			AsyncCallback<BookReview> callbackWriteBookReview);
 
 	void getGameReview(String user, int barcode,

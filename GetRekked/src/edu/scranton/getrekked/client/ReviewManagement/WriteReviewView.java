@@ -10,9 +10,9 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 
-import edu.scranton.getrekked.shared.Book;
-import edu.scranton.getrekked.shared.Game;
-import edu.scranton.getrekked.shared.Movie;
+//import edu.scranton.getrekked.shared.Book;
+//import edu.scranton.getrekked.shared.Game;
+//import edu.scranton.getrekked.shared.Movie;
 
 public class WriteReviewView implements WriteReviewPresenter.View {
 	private DecoratorPanel mainPanel = null;
@@ -20,9 +20,8 @@ public class WriteReviewView implements WriteReviewPresenter.View {
 	private FlexTable reviewTable = new FlexTable();
 	private TextBox reviewBox;
 	private TextBox rankingBox;
-	private Book mBook;
-	private Movie mMovie;
-	private Game mGame;
+	private TextBox userNameBox;
+	private TextBox isbnBox;
 
 	public WriteReviewView(WriteReviewPresenter presenter) {
 		this.dispatcher = presenter;
@@ -41,21 +40,15 @@ public class WriteReviewView implements WriteReviewPresenter.View {
 
 		reviewTable = new FlexTable();
 		reviewBox = new TextBox();
-		reviewBox.setVisibleLength(250);
+		reviewBox.setVisibleLength(255);
+		reviewBox.setMaxLength(255);
 		rankingBox = new TextBox();
-		/*if (mBook != null) {
-			reviewTable.setWidget(0, 0,
-					new Label("Review for ISBN: " + mBook.getIsbn()));
-		} else if (mMovie != null) {
-			reviewTable.setWidget(
-					0,
-					0,
-					new Label("Review for " + mMovie.getTitle() + " ("
-							+ mMovie.getRelease_date() + ")"));
-		} else { // gameReview != null
-			reviewTable.setWidget(0, 0, new Label("Review for Barcode: "
-					+ mGame.getBarcode()));
-		}*/
+		userNameBox = new TextBox();
+		isbnBox = new TextBox();
+		reviewTable.setWidget(0, 0, new Label("Username: "));
+		reviewTable.setWidget(0, 1, userNameBox);
+		reviewTable.setWidget(0, 2, new Label("ISBN: "));
+		reviewTable.setWidget(0, 3, isbnBox);
 		reviewTable.setWidget(1, 0, new Label("Write review: "));
 		reviewTable.setWidget(1, 1, reviewBox);
 		reviewTable.setWidget(2, 0, new Label("Rank (0-5): "));
@@ -76,23 +69,13 @@ public class WriteReviewView implements WriteReviewPresenter.View {
 		this.dispatcher = presenter;
 	}
 
-	public void setBookData(Book book) {
-		mBook = book;
-	}
-
-	public void setMovieData(Movie movie) {
-		mMovie = movie;
-	}
-
-	public void setGameData(Game game) {
-		mGame = game;
-	}
-
 	private class ReviewButtonClickHandler implements ClickHandler {
 		public void onClick(ClickEvent event) {
+			String reviewer = userNameBox.getText();
+			String isbn = isbnBox.getText();
 			String review = reviewBox.getText();
 			String ranking = rankingBox.getText();
-			dispatcher.writeReview(review, Integer.parseInt(ranking));
+			dispatcher.writeReview(reviewer, isbn, review, ranking);
 		}
 	}
 }

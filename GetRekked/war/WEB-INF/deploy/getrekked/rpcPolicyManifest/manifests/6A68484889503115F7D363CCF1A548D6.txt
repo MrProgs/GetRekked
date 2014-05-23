@@ -1,0 +1,2 @@
+serviceClass: edu.scranton.getrekked.client.Authentication.Proxy.AuthenticationService
+path: A39A1D69403DB371A11AD3604D01AD0C.gwt.rpc
