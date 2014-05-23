@@ -9,7 +9,7 @@ import edu.scranton.getrekked.shared.Game;
 import edu.scranton.getrekked.shared.Movie;
 
 public class ContentServiceProxy {
-	public void getBook(int isbn, AsyncCallback<Book> callbackGetBook) {
+	public void getBook(String isbn, AsyncCallback<Book> callbackGetBook) {
 		ContentServiceAsync contentService = GWT.create(ContentService.class);
 		contentService.getBook(isbn, callbackGetBook);
 	}
@@ -25,9 +25,9 @@ public class ContentServiceProxy {
 		contentService.getGame(barcode, callbackGetGame);
 	}
 
-	public void addBook(int isbn, AsyncCallback<Void> callbackGetBook) {
+	public void addBook(Book book, AsyncCallback<Void> callbackGetBook) {
 		ContentServiceAsync contentService = GWT.create(ContentService.class);
-		contentService.addBook(isbn, callbackGetBook);
+		contentService.addBook(book, callbackGetBook);
 	}
 
 	public void addMovie(String title, int release_year,

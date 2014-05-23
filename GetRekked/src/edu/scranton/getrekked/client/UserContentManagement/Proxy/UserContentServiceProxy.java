@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
-import edu.scranton.getrekked.client.UserContentManagement.Proxy.UserContentService;
-import edu.scranton.getrekked.client.UserContentManagement.Proxy.UserContentServiceAsync;
 import edu.scranton.getrekked.shared.User;
 
 public class UserContentServiceProxy {
